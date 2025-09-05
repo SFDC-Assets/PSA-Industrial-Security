@@ -1,0 +1,1480 @@
+<!doctype html>
+<html><head><title>Industrial Security Guide (DRAFT)</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 22px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 16px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 15px;
+    line-height: 14px;
+}
+h5 {
+    font-style: italic;
+}
+
+h6 {
+    font-weight: unset;
+    text-decoration: underline;
+}
+
+.capitalize-h3 h3 {
+    text-transform: uppercase;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Text Alignment */
+.line {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: end;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+div[data-section-style="11"].show-border {
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+/*
+ * Copyright 2019 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+
+/* Numbered list */
+div[data-section-style="6"] {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+div[data-section-style="6"].list-numbering-continue {
+    counter-reset: none;
+}
+div[data-section-style="6"].list-numbering-restart-at {
+    counter-reset: indent0 var(--indent0) indent1 indent2 indent3 indent4
+        indent5 indent6 indent7 indent8;
+}
+div[data-section-style="6"] ul {
+    /* indent0 is not reset since it is shared across the div elements */
+    list-style-type: none !important;
+}
+div[data-section-style="6"] ul ul {
+    counter-reset: indent1;
+}
+div[data-section-style="6"] ul ul ul {
+    counter-reset: indent2;
+}
+div[data-section-style="6"] ul ul ul ul {
+    counter-reset: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    counter-reset: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    counter-reset: indent5;
+}
+div[data-section-style="6"] ul li {
+    counter-increment: indent0;
+}
+div[data-section-style="6"] ul ul li {
+    counter-increment: indent1;
+}
+div[data-section-style="6"] ul ul ul li {
+    counter-increment: indent2;
+}
+div[data-section-style="6"] ul ul ul ul li {
+    counter-increment: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul li {
+    counter-increment: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul li {
+    counter-increment: indent5;
+}
+div[data-section-style="6"] ul li:before {
+    content: counter(indent0, decimal) ". ";
+}
+div[data-section-style="6"] ul ul li:before {
+    content: counter(indent1, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul li:before {
+    content: counter(indent2, lower-roman) ". ";
+}
+div[data-section-style="6"] ul ul ul ul li:before {
+    content: counter(indent3, decimal) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul li:before {
+    content: counter(indent4, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul ul li:before {
+    content: counter(indent5, lower-roman) ". ";
+}
+</style></head><body><h1 id='temp:C:LSY98f24d6e96534f2cb71b249fe'>Industrial Security Guide (DRAFT)</h1>
+
+<i>Last Updated: 6/25/2025 by Alex Ross</i><br/>
+
+<br/>
+
+<b>Content</b><br/>
+
+<div data-section-style='6' class="" style=""><ul id='temp:C:LSY118e33ad0ad44ab98dee4d38c'><li id='temp:C:LSY3cf2e1438afa425c83d7f7c9b' class='' value='1'><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY5759307e3cd942659424b84b1">About the App </a>
+
+<br/></li><li id='temp:C:LSY2c28947070fa490a9ee4c26c0' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSYcee5d3a0168e435e9c4512c7b">Salesforce Unmanaged Package Flexibility &amp; Disclaimer</a>
+
+<br/></li><li id='temp:C:LSY1a2880b91d0a4855b8aea6729' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY1e6f94c3a5a24c43aea343895">License Compatibility &amp; App Design Considerations</a>
+
+<br/></li><li id='temp:C:LSY3588054fdff64e01af3d7dcfb' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY43603019e485438db6ba07cc1">Objects &amp; Included Permission Sets</a>
+
+<br/></li><li id='temp:C:LSY51f137d1ee2b4f42a1892aa00' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY329dd9ab4ec4463dbe7f2ad70">Org Requirements &amp; Setup Prerequisites  </a>(Required before Install)
+
+<br/></li><li id='temp:C:LSY12b714501e0644508620c5174' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY67e936a3221640709938edba0">Installation and Setup Instructions </a>
+
+<br/></li><li id='temp:C:LSY61dd6c21186448a1b85c0a9b7' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY5429238747c94e96ad4a71869">Optional Setup Instructions</a>
+
+<br/></li><li id='temp:C:LSY7b3d1e0c8a1d49e29d7aac07a' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY0116de2fc6a741048e1486d39">Included Flows &amp; SEAD-3 Workflows</a>
+
+<br/></li><li id='temp:C:LSY4e8bd69c7704489aaec41d5d6' class=''><a href="https://salesforce.quip.com/rOgcAaye4XEO#temp:C:LSY462b04c258914266ae1ad394e">Data Model</a>
+
+<br/></li><li id='temp:C:LSY05c04d8df18440dcbc18987e8' class=''>About the Custom Lightning Web Components
+
+<br/></li></ul></div><br/>
+
+<h3 id='temp:C:LSY5759307e3cd942659424b84b1'><u><b>1. About the App</b></u></h3>
+
+<div data-section-style='5' style="" class=""><ul id='temp:C:LSY977b5daaa04c44ad8c7a526a1'><li id='temp:C:LSYd0341994a13842fb81627d0bd' class='parent' value='1'>Authors: 
+
+<br/></li><ul><li id='temp:C:LSYc57188555b9c40f288322a1ea' class=''>Alex Ross, Sr. Salesforce SE (<a href="mailto:wross@salesforce.com">wross@salesforce.com</a>)
+
+<br/></li><li id='temp:C:LSYf1eb053ab9ad4c1ea9876cf8a' class=''>John Schneider, Lead Salesforce SE (<a href="mailto:j.schneider@salesforce.com">j.schneider@salesforce.com</a>)
+
+<br/></li></ul><li id='temp:C:LSYce236dc1df574169ba0eb3dae' class=''>Last Published Date: <control data-remapped="true" id="temp:C:LSY5b646f58ef9c48da921d704d0">6/25/2025</control>
+
+<br/></li><li id='temp:C:LSYb61bb1e3ccb84912967aecd56' class=''>Latest Version Name: Beta06252025
+
+<br/></li><li id='temp:C:LSY1d2fa54ec03e4bbeb1c6783e9' class=''>GitHub Repo: <a href="http://PSA-Industrial-Security-DEV">PSA-Industrial-Security-DEV</a>
+
+<br/></li><li id='temp:C:LSY5846019a45a5460cb11b40d07' class=''>Latest Version Number: 1.91
+
+<br/></li><li id='temp:C:LSYcb02db1f3bcf4769a03ac8f72' class=''>This solution was developed as part of Salesforce’s <a href="https://gpsaccelerators.developer.salesforce.com/"><b>Global Public Sector Accelerator Program</b></a>, which provides ready-to-use apps and templates tailored for government, defense, and aerospace use cases. 
+
+<br/></li></ul></div><hr style='width:100%'><h3 id='temp:C:LSYcee5d3a0168e435e9c4512c7b'><u>2. Salesforce Unmanaged Package Terms of Use</u></h3>
+
+<span style="color:#1a1b1e" textcolor="#1a1b1e">Thank you for using Public Sector Accelerators. Accelerators are provided by Salesforce.com, Inc., located at 1 Market Street, San Francisco, CA 94105, United States.</span><br/>
+
+<br/>
+
+<span style="color:#1a1b1e" textcolor="#1a1b1e">By using this site and these accelerators, you are agreeing to these terms. Please read them carefully.</span><br/>
+
+<br/>
+
+<span style="color:#1a1b1e" textcolor="#1a1b1e">Accelerators are not supported by Salesforce, they are supplied as-is, and are meant to be a starting point for your organization. Salesforce is not liable for the use of accelerators.</span><br/>
+
+<br/>
+
+<span style="color:#1a1b1e" textcolor="#1a1b1e">In addition, this accelerator tool is intended to provide capabilities for Customers to configure and optimize use of their implemented Salesforce Services. Customers should ensure that their use of this tool meets their own use case needs and compliance requirements (including any applicable public sector and privacy laws, rules, and regulations).</span><br/>
+
+<br/>
+
+<h3 id='temp:C:LSY1e6f94c3a5a24c43aea343895'><u>3. License Compatibility &amp; App Design Considerations</u></h3>
+
+This solution was designed to work primarily with <b>Salesforce Platform Plus licenses</b> to ensure broad compatibility across user types without requiring full Sales or Service Cloud licensing. However, certain user roles—such as <b>Facility Security Officers (FSOs)</b>—require additional capabilities that are not supported by Platform licenses.<br/>
+
+<h4 id='temp:C:LSY48d3fe35264e494fa515ad03b'> License Recommendations by Role:</h4>
+
+<div data-section-style='5' style="" class=""><ul id='temp:C:LSY879846ac412b4ba48d772f670'><li id='temp:C:LSYea35b1311d524b6a85a3e6e83' class='' value='1'><b>FSO Users</b> must have at least a <b>Salesforce (core Sales Cloud or Service Cloud) license</b>, as they need access to the <b>User</b> object and other setup-level features to manage personnel, view user records, and oversee security workflows.
+
+<br/></li><li id='temp:C:LSYc5f18b47830d4b06ace980ed9' class=''><b>Employee Users</b> only require a <b>Salesforce Platform Plus license</b>, which provides sufficient access to interact with their own records, submit reportable events, and use self-service flows.
+
+<br/></li></ul></div><hr style='width:100%'><h3 id='temp:C:LSYda201e053bbb4f37a36fc10c7'>Custom Object Limits by License:</h3>
+
+<div data-section-style='13'><table id='temp:C:LSY1232e8cb43644a13898a4ba59' title='Sheet3' style='width: 44.8667em'><thead><tr><th class='empty' style='width: 2em'/><th id='temp:C:LSY97368a8de8624f11a86b2d1b9'  style='width: 6em'>License Type
+
+<br/></th><th id='temp:C:LSYfbc7fb28cc424da8a7a284eb6'  style='width: 10.0667em'>Custom Object Limit
+
+<br/></th><th id='temp:C:LSY5029c01d11364145a9706b560'  style='width: 28.8em'>Notes
+
+<br/></th></tr></thead><tbody><tr id='temp:C:LSY8f1a7270a99d4d2388ccb3a85'><td style='background-color:#f0f0f0'>1</td><td id='temp:s:temp:C:LSY8f1a7270a99d4d2388ccb3a85;temp:C:LSYc0f50039217f4a7d938208013' style='text-align: left;vertical-align: middle;'>Platform
+
+<br/></td><td id='temp:s:temp:C:LSY8f1a7270a99d4d2388ccb3a85;temp:C:LSY0e2f4d94c2a44d78a89bf5e18' style='text-align: left;vertical-align: middle;'>10
+
+<br/></td><td id='temp:s:temp:C:LSY8f1a7270a99d4d2388ccb3a85;temp:C:LSYfc01da69bb7c490e86bd99bb0' style='text-align: left;vertical-align: middle;'>Designed for lightweight apps
+
+<br/></td></tr><tr id='temp:C:LSYa9ca85a3505f40c7954137e98'><td style='background-color:#f0f0f0'>2</td><td id='temp:s:temp:C:LSYa9ca85a3505f40c7954137e98;temp:C:LSYc0f50039217f4a7d938208013' style='text-align: left;vertical-align: middle;'>Platform Plus
+
+<br/></td><td id='temp:s:temp:C:LSYa9ca85a3505f40c7954137e98;temp:C:LSY0e2f4d94c2a44d78a89bf5e18' style='text-align: left;vertical-align: middle;'>110
+
+<br/></td><td id='temp:s:temp:C:LSYa9ca85a3505f40c7954137e98;temp:C:LSYfc01da69bb7c490e86bd99bb0' style='text-align: left;vertical-align: middle;'>Suitable for complex apps and larger data models
+
+<br/></td></tr></tbody></table></div><div data-section-style='5' style="" class=""><ul id='temp:C:LSY3c79f94dcd6045109c66d52b0'><li id='temp:C:LSY09a7a0a279f94a639504b1fc9' class='' value='1'>If your org uses Platform licenses, be aware that users may hit the 10-object limit if the app includes many related custom objects.
+
+<br/></li><li id='temp:C:LSYfd22192f57dd40dabd54d865f' class=''>The app was designed with Platform Plus scalability in mind but can still operate under basic Platform licenses if usage is limited to core objects.
+
+<br/></li></ul></div>Recommendation: Assign Platform Plus licenses to all Employee users and Salesforce (core) licenses to all FSOs for full functionality and scalability.<br/>
+
+<br/>
+
+<hr style='width:100%'><h3 id='temp:C:LSY43603019e485438db6ba07cc1'><u><b>4. Objects &amp; Definitions </b></u></h3>
+
+<b>Individual Object</b><br/>
+
+<div data-section-style='5' style="" class=""><ul id='temp:C:LSYda45a47b5fe64b95a221d2d02'><li id='temp:C:LSY804c9619b8ca493eb56edf652' class='parent' value='1'>In our Industrial Security App, we leverage the Salesforce standard Individual object as a central hub to represent each employee within the app. The Individual object acts as a flexible, reusable data model that stores detailed personal and employment information for different categories of employees across the organization.
+
+<br/></li><ul><li id='temp:C:LSY228a7ce4e3474718918f860ba' class='parent'><b>One Individual = One Employee</b>
+
+<br/></li><ul><li id='temp:C:LSY0747e874d1074118a0c0b9099' class=''>Each Individual record uniquely represents a single employee at a company. This clear mapping ensures accurate tracking of individual employees for security, compliance, and reporting purposes.
+
+<br/></li></ul><li id='temp:C:LSY1a23a36b4dfa49a7b959f3e2a' class='parent'><b>User Record Required First</b>
+
+<br/></li><ul><li id='temp:C:LSY891bba2204234513aca82de6d' class=''>Before creating a new Individual record, a corresponding User record must already exist in Salesforce.
+
+<br/></li><li id='temp:C:LSY48c008ca1dd24660829afecbf' class=''>Once linked, the Individual object will automatically pull in User-specific data, such as the profile picture, email, and other attributes.
+
+<br/></li><li id='temp:C:LSY94caa7d05f7f4ff186d3d901d' class='parent'>Support security and access control by ensuring each Individual is tied to an authenticated user.
+
+<br/></li><ul><li id='temp:C:LSY3fdc020c17f64a04928cac3bc' class=''>For example, when an Employee logs in, this ensure that only that User can access their related Industrial Security Profile
+
+<br/></li></ul><li id='temp:C:LSY88a40515f46b461495a289cee' class='parent'>Enter the User ID of the employee in the User Id field when creating a new Individual record to link. 
+
+<br/></li><ul><li id='temp:C:LSY3a242cf2fa1d43c2be1b928a4' class=''>NOTE - the User ID is the first 15 characters, not the full 18
+
+<br/></li></ul></ul></ul><li id='temp:C:LSYf6f7f6f850ab4cc484099c41c' class='parent'><b>Profiles &amp; Permission Sets</b>
+
+<br/></li><ul><li id='temp:C:LSYb502adaa10594e348e25e0961' class='parent'>Note: This unmanaged package does not include any user profiles. Lightning Record Page assignments must still be configured through your own profiles. However, the package does include two permission sets:
+
+<br/></li><ul><li id='temp:C:LSY0a0be779d2774a78b6b7b03b1' class='parent'><b><code>INDSEC_Individual_Reporter<br></code></b>
+
+<br/></li><ul><li id='temp:C:LSY9380eff11c1a44ab8d43fcefe' class=''>Grants access suitable for employee users submitting reportable events
+
+<br/></li><li id='temp:C:LSY1fe28a4418a04608b9088d20e' class=''>Permissions: 
+
+<br/></li></ul></ul></ul></ul></div><div data-section-style='13'><table id='temp:C:LSY2e0327256ac54e3b825c4faf8' title='Sheet6' style='width: 41.4667em'><tbody><tr id='temp:C:LSY2d12a0078019426ba4b53df72'><td id='temp:s:temp:C:LSY2d12a0078019426ba4b53df72;temp:C:LSYb1a0595ce325490c8ef408f52' style='' class='bold'>Category
+
+<br/></td><td id='temp:s:temp:C:LSY2d12a0078019426ba4b53df72;temp:C:LSY8d9bfe9b344e41b29c1add1b3' style='' class='bold'>Details
+
+<br/></td></tr><tr id='temp:C:LSY979f16a1b3124ecca737af41d'><td id='temp:s:temp:C:LSY979f16a1b3124ecca737af41d;temp:C:LSYb1a0595ce325490c8ef408f52' style=''>Assigned Apps
+
+<br/></td><td id='temp:s:temp:C:LSY979f16a1b3124ecca737af41d;temp:C:LSY8d9bfe9b344e41b29c1add1b3' style=''>- Employee Center (<code>Employee_Center</code>)
+
+<br/></td></tr><tr id='temp:C:LSY2498a4bba570443cbe79b8acb'><td id='temp:s:temp:C:LSY2498a4bba570443cbe79b8acb;temp:C:LSYb1a0595ce325490c8ef408f52' style='vertical-align: top;' class='bold'>Object &amp; Field Permissions
+
+<br/></td><td id='temp:s:temp:C:LSY2498a4bba570443cbe79b8acb;temp:C:LSY8d9bfe9b344e41b29c1add1b3' style=''><b>Read Only</b>:<br>- Alerts <br><br><b>Read, Create, Edit, Delete</b>:<br>- Reportable Events <br> - Foreign Travel Passports (Junction object) <br> - Contact Point Emails <br> - Contact Point Addresses <br> - Cohabitants <br> - Emergency Contacts <br> - Foreign Travel Passports <br> - Individual <br> - SMO Contacts <br> - Trip Legs <br> - Trip Lodging <br> - Visit Requests Individuals <br><br><b>Additional Permissions</b>:<br>- Individual: View All Records <br> - Individual Files: Read, Create, Edit <br> - Contact Point Passports: Read All / Modify All <br> - Security Violations: Read All / Modify All <br> - Travel Emergency Contacts (Junction object): Read, Create, Edit <br> - Travel Warning Acknowledgements: Read, Create, Edit <br> - Travel Warnings: Read, Create, Edit <br> - Visit Requests: Read, Create, Edit
+
+<br/></td></tr><tr id='temp:C:LSY18170b537a7d45a1acf2cceb7'><td id='temp:s:temp:C:LSY18170b537a7d45a1acf2cceb7;temp:C:LSYb1a0595ce325490c8ef408f52' style='text-align: left;vertical-align: top;'><b>Apex Classes</b>
+
+<br/></td><td id='temp:s:temp:C:LSY18170b537a7d45a1acf2cceb7;temp:C:LSY8d9bfe9b344e41b29c1add1b3' style=''>- AlertController <br> - AlertControllerTest <br> - CommList_EditRL_LookupFieldCC <br> - CommList_EditRL_LookupFieldCCTest <br> - CommList_PicklistOption <br> - CommList_PicklistService <br> - CommList_PicklistServiceTest <br> - CommList_RelatedListEditorCC <br> - CommList_RelatedListEditorCCTest <br> - IndividualFileController <br> - IndividualFileControllerTest <br> - IndividualFileListController <br> - IndividualFileListControllerTest <br> - IndividualFileViewerController <br> - IndividualFileViewerControllerTest <br> - IndividualProfileCardController <br> - IndividualProfileCardControllerTest <br> - IndividualRecordController <br> - IndividualRecordControllerTest <br> - PassportController <br> - PassportControllerTest <br> - RedirectToProfileController <br> - RedirectToProfileControllerTest <br> - TileFlowMappingController <br> - TileFlowMappingControllerTest <br> - TravelAdvisoryHandler <br> - TravelAdvisoryHandlerTest <br> - TravelWarningController <br> - TravelWarningControllerTest
+
+<br/></td></tr><tr id='temp:C:LSY6ca5241ce4664af2bba05b2c1'><td id='temp:s:temp:C:LSY6ca5241ce4664af2bba05b2c1;temp:C:LSYb1a0595ce325490c8ef408f52' style='text-align: left;vertical-align: top;'><b>Custom Metadata Types</b>
+
+<br/></td><td id='temp:s:temp:C:LSY6ca5241ce4664af2bba05b2c1;temp:C:LSY8d9bfe9b344e41b29c1add1b3' style=''>- Tile Flow Mapping
+
+<br/></td></tr></tbody></table></div><div data-section-style='5' style="" class=""><ul id='temp:C:LSYedcc78c13e8b4bf0af3f9262a'><ul><ul><li id='temp:C:LSY8b270f6a73d54092bffe3784a' class='parent' value='1'><b><code>INDSEC_Security_Team</code></b>
+
+<br/></li><ul><li id='temp:C:LSYe51d22aa28a444e88dccf6f74' class=''>Grants broader access for members of the security team handling investigations or incidents.
+
+<br/></li></ul><li id='temp:C:LSYb64d2e4bdfdf4f5296a510a81' class=''>Permissions: 
+
+<br/></li></ul></ul></ul></div><div data-section-style='13'><table id='temp:C:LSYfcafe15e1a3443fc9544d33a8' title='Sheet5' style='width: 44.6em'><tbody><tr id='temp:C:LSY13265865445147e59b1ae5f50'><td id='temp:s:temp:C:LSY13265865445147e59b1ae5f50;temp:C:LSY32c8d72ed4f3456386bc9a76f' style='' class='bold'>Category
+
+<br/></td><td id='temp:s:temp:C:LSY13265865445147e59b1ae5f50;temp:C:LSY70159240e6bc4aacb499507ad' style='' class='bold'>Details
+
+<br/></td></tr><tr id='temp:C:LSY3f289fb4671a4f9384879d4ad'><td id='temp:s:temp:C:LSY3f289fb4671a4f9384879d4ad;temp:C:LSY32c8d72ed4f3456386bc9a76f' style='text-align: left;vertical-align: middle;'><b>Assigned Apps</b>
+
+<br/></td><td id='temp:s:temp:C:LSY3f289fb4671a4f9384879d4ad;temp:C:LSY70159240e6bc4aacb499507ad' style='text-align: left;vertical-align: middle;'>- INDSEC FSO (<code>Industrial_Security_Standard</code>) <br> - INDSEC Employee (<code>Employee_Center</code>)
+
+<br/></td></tr><tr id='temp:C:LSY5380f3fa6dcb41cbb54f4840c'><td id='temp:s:temp:C:LSY5380f3fa6dcb41cbb54f4840c;temp:C:LSY32c8d72ed4f3456386bc9a76f' style='text-align: left;vertical-align: top;'><b>Object &amp; Field Permissions</b>
+
+<br/></td><td id='temp:s:temp:C:LSY5380f3fa6dcb41cbb54f4840c;temp:C:LSY70159240e6bc4aacb499507ad' style='text-align: left;vertical-align: middle;'><b>Objects with Read All / Modify All / Tab Available</b>:<br>- Alerts <br> - Reportable Events <br><br><b>Objects with Read All / Modify All</b>:<br>- Foreign Travel Passports (Junction object) <br> - Contact Point Passports <br> - Cohabitants <br> - Emergency Contacts <br> - Individual Files <br> - Security Violations <br> - Travel Emergency Contacts (Junction object) <br> - Travel Warning Acknowledgements <br> - Travel Warnings <br> - Trip Legs <br> - Trip Lodging <br> - Visit Requests Individuals <br><br><b>Tab Available Only</b>:<br>- Visit Requests <br><br><b>Other Objects (Permissions Not Specified)</b>:<br>- Contact Point Addresses <br> - SMO Contacts
+
+<br/></td></tr><tr id='temp:C:LSY0b6c59485eaf4a59bbb3f1601'><td id='temp:s:temp:C:LSY0b6c59485eaf4a59bbb3f1601;temp:C:LSY32c8d72ed4f3456386bc9a76f' style='text-align: left;vertical-align: top;'><b>Apex Classes</b>
+
+<br/></td><td id='temp:s:temp:C:LSY0b6c59485eaf4a59bbb3f1601;temp:C:LSY70159240e6bc4aacb499507ad' style='text-align: left;vertical-align: middle;'>- AlertController <br> - AlertControllerTest <br> - CommList_EditRL_LookupFieldCC <br> - CommList_EditRL_LookupFieldCCTest <br> - CommList_PicklistOption <br> - CommList_PicklistService <br> - CommList_PicklistServiceTest <br> - CommList_RelatedListEditorCC <br> - CommList_RelatedListEditorCCTest <br> - IndividualFileController <br> - IndividualFileControllerTest <br> - IndividualFileListController <br> - IndividualFileListControllerTest <br> - IndividualFileViewerController <br> - IndividualFileViewerControllerTest <br> - IndividualProfileCardController <br> - IndividualProfileCardControllerTest <br> - IndividualRecordController <br> - IndividualRecordControllerTest <br> - PassportController <br> - PassportControllerTest <br> - RedirectToProfileController <br> - RedirectToProfileControllerTest <br> - TileFlowMappingController <br> - TileFlowMappingControllerTest <br> - TravelAdvisoryHandler <br> - TravelAdvisoryHandlerTest <br> - TravelWarningController <br> - TravelWarningControllerTest
+
+<br/></td></tr><tr id='temp:C:LSY45dde8a7e41447e58b1a15f6f'><td id='temp:s:temp:C:LSY45dde8a7e41447e58b1a15f6f;temp:C:LSY32c8d72ed4f3456386bc9a76f' style='text-align: left;vertical-align: top;'><b>Custom Metadata Types</b>
+
+<br/></td><td id='temp:s:temp:C:LSY45dde8a7e41447e58b1a15f6f;temp:C:LSY70159240e6bc4aacb499507ad' style='text-align: left;vertical-align: middle;'>- Tile Flow Mapping
+
+<br/></td></tr><tr id='temp:C:LSY78f17690583a4302a667a53f0'><td id='temp:s:temp:C:LSY78f17690583a4302a667a53f0;temp:C:LSY32c8d72ed4f3456386bc9a76f' style=''>
+
+<br/></td><td id='temp:s:temp:C:LSY78f17690583a4302a667a53f0;temp:C:LSY70159240e6bc4aacb499507ad' style=''>
+
+<br/></td></tr></tbody></table></div><div data-section-style='5' style="" class=""><ul id='temp:C:LSY76976ce195ce4875b00757d8c'><ul><li id='temp:C:LSYb7e88db2b1a34668916145cea' class='' value='1'>We recommend assigning these permission sets to users based on their role if you are installing into a new org. <b>You may still need to create or update your own profiles</b> (e.g., an <i>Employee Profile</i>) to control visibility of Lightning Record Pages and tab assignments.
+
+<br/></li></ul></ul></div><hr style='width:100%'><h3 id='temp:C:LSY329dd9ab4ec4463dbe7f2ad70'><b><u>5. Org Requirements &amp; Setup Prerequisites</u> (Required before Install)</b></h3>
+
+<div data-section-style='5' style="" class=""><ul id='temp:C:LSY777222d49f684eb0910ada00c'><li id='temp:C:LSYaf11941ce95140919f1ff24e8' class='parent' value='1'>Enable <b>Custom</b> <b>Addresses </b>(if not already enabled)
+
+<br/></li><ul><li id='temp:C:LSY7e94b92526284145b12743d6c' class='parent'><b>Steps:</b>
+
+<br/></li><ul><li id='temp:C:LSY475e737138154cc19b98b62b6' class=''>Navigate to <b>Setup</b>.
+
+<br/></li><li id='temp:C:LSYa2276731b465469b8d2f7f8c0' class=''>In the Quick Find box, type: <b>User Interface</b>
+
+<br/></li><li id='temp:C:LSYe475901b4f874f69a6504cd76' class=''>Select <b>User Interface</b> (near the bottom after Translation Workbench)
+
+<br/></li><li id='temp:C:LSY50226d98dcdf4750b563e64cd' class=''>Scroll to the <b>Setup</b> section.
+
+<br/></li><li id='temp:C:LSYd15da3f6483640d2b4841df83' class=''>Check the box: <b>Use custom address fields</b>
+
+<br/></li><li id='temp:C:LSYbb4e44ad0beb4c6ebde4951e5' class=''>Click <b>Save</b>.
+
+<br/></li><li id='temp:C:LSYd3a3cc6fc0ae4f45bf4b87b07' class=''><span data-section-style='11' style='max-width:50%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/v2Fi2RUIur-yFRUfgHdkzg?a=5aayBYoGBLkGSOma2Pbcjvvjdax4LkChmF7Im3nNTfka' id='temp:C:LSYd3a3cc6fc0ae4f45bf4b87b07' width='400' height='243' alt="Screenshot 2025-06-18 at 9.14.05 PM.png"></img></span></li><li id='temp:C:LSYa4c397200872478f892f9f843' class=''>Note: This setting is <b>permanent</b> and cannot be undone once enabled. Review <a href="https://help.salesforce.com/s/articleView?id=release-notes.rn_forcecom_field_def_address.htm&amp;type=5">feature limitations</a> before proceeding.
+
+<br/></li><li id='temp:C:LSY48f127eae5184da39a1cae88b' class=''>After enabling this setting, you can proceed with the installation. This enables support for the <code>Address</code> field type used in custom objects like <code>Emergency Contact</code>, <code>Trip Lodging</code>, and others in this package.
+
+<br/></li></ul></ul></ul></div><br/>
+
+<hr style='width:100%'><br/>
+
+<br/>
+
+<h3 id='temp:C:LSY67e936a3221640709938edba0'><u><b>6. Installation and Setup Instructions </b></u></h3>
+
+<div data-section-style='6' class="" style=""><ul id='temp:C:LSY3414c15ba0a54bacbfbaebdae'><li id='temp:C:LSYbbdaee7552064c718de4e6b58' class='parent' value='1'>Navigate to the Industrial Security App download URL:
+
+<br/></li><ul><li id='temp:C:LSYd8d44b8abce7461cba2adb8a7' class=''>
+
+<br/></li><li id='temp:C:LSYb28a115c110546cd957331f03' class=''>V 1.3 - Beta213May25
+
+<br/></li></ul><li id='temp:C:LSY325afe1744c34d69a66ef6ea8' class=''>Enter the credentials of the org you wish to install the unmanaged package into
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/yMX0sLqk1Q4Wnnu4Wi3EBg?a=H04kE4xExEBdkGUrIDHG0t0vWzBHWLmVNTxA3zz0rNga' id='temp:C:LSY9316f4ff56a049288cfad0b0e' alt="Screenshot 2025-05-21 at 9.45.20 PM.png"></img></div><br/>
+
+<div style="--indent0: 3" class="list-numbering-restart-at" data-section-style='6'><ul id='temp:C:LSY3bb3c23eaebf446693831aa9e'><li id='temp:C:LSYfe8b75c724194e96858e87922' class='' value='1'>On the Install Screen, first select <b>Do not install</b> under the conflicting component names. 
+
+<br/></li><li id='temp:C:LSY3a9725976efa45f99db83580d' class=''>Also, select<b> Install for Admins Only</b>. 
+
+<br/></li><li id='temp:C:LSYb27a96353acd44c2a288608c7' class=''>Then select, <b>Install</b>. 
+
+<br/></li><li id='temp:C:LSY3f75bc6394cb4e72a0b4e3edf' class=''><span data-section-style='11' style='max-width:80%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/PmuFiJc0xgKWN814ye6KHw?a=z5qEeW4pkO4Ky1fcMUgWQbT0PtxQlzlCDyk4Sz3UorQa' id='temp:C:LSY3f75bc6394cb4e72a0b4e3edf' width='643' height='461' alt="Screenshot 2025-06-25 at 4.51.44 PM.png"></img></span></li><li id='temp:C:LSYa9f5c6d7a4de4cd680bf29a1d' class='parent'>After you select Install, a Third-Party Access option will display. Select <b>Yes, grant access to these third-party web sites</b> if you wish to use the U.S. Department of State API to display real-time travel warnings.
+
+<br/></li><ul><li id='temp:C:LSYe4e714c7532346b7be21a01b0' class=''>This API integration only pulls data from the State Department’s Travel Advisory website. No data will ever leave your Salesforce org to a third party system. 
+
+<br/></li></ul></ul></div><div data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/PyhKJKyodyi8O-NM86ceWw?a=pR9ji3QDeJEsLv9h68v0NjbGl0QhIZhi4Czxa7tYGiIa' id='temp:C:LSYf55749057b464603a615de158' alt="Screenshot 2025-05-21 at 9.55.26 PM.png"></img></div><br/>
+
+<div class="list-numbering-restart-at" data-section-style='6' style="--indent0: 5"><ul id='temp:C:LSY76bc89af37fb4787926145b0b'><li id='temp:C:LSYf3081d31990f4039b3b324507' class='' value='1'>You’ll see a notification indicating that the installation may take a while—this is normal.
+
+<br/></li></ul></div><div data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/NXxyZBtqlZ0xxrnFeumnvg?a=NzEJOOVsFasZUyMLp2Q1htjHvBbZX7FzUWChfFIi2aQa' id='temp:C:LSYd2900d10d2a8403691ae01791' alt="Screenshot 2025-05-21 at 11.27.10 PM.png"></img></div><br/>
+
+<div class="list-numbering-restart-at" data-section-style='6' style="--indent0: 6"><ul id='temp:C:LSYbe0c2746754d4a21bce9933e4'><li id='temp:C:LSY6ac38c2242de4b42b3d6c8b10' class='' value='1'>After receiving the <b>successful installation email</b>, confirm the install by checking the unmanaged package under <b>Installed Packages </b>in Setup. 
+
+<br/></li><li id='temp:C:LSY3ab7de60f91648e7809808550' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/jgDDZgp6t-IIdqunPXKGag?a=taNBmMqawITGFpvqkThlkWVA7UyuaYlmIftBnqxbdWga' id='temp:C:LSY3ab7de60f91648e7809808550' width='800' height='436' alt="Screenshot 2025-06-25 at 4.59.33 PM.png"></img></span></li><li id='temp:C:LSYe56f703efe93402cad5588155' class='parent'><b>Test Drive the new INDSEC Apps as an Admin</b>
+
+<br/></li><ul><li id='temp:C:LSYaac5c204a208486386fb45c12' class=''>Start by exploring the included apps from both perspectives:
+
+<br/></li><li id='temp:C:LSY6bf178fc17d14566870ee0fd7' class=''>Open the <b>Salesforce App Launcher</b>
+
+<br/></li><li id='temp:C:LSY655147fe10c74b6cbe23d272d' class='parent'>Search and launch the <b>INDSEC FSO</b> and <b>INDSEC Employee</b> apps
+
+<br/></li><ul><li id='temp:C:LSYf01e8d2cdbca4bd096112d1dd' class=''><b>Important:</b> Don’t click around or submit anything just yet such as submitting Reportable Events and running flows. Follow the steps in the sections below first to get the full guided experience.
+
+<br/></li></ul><li id='temp:C:LSY7f19a56bd06d48a0a15dba53f' class=''><span data-section-style='11' style='max-width:43%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/HLtMox6-CIJ6rZsZ3yr4ug?a=I2esaiVz5GvOlAyLSQqiivTNYf9MVJUtcPmlD6NQyvoa' id='temp:C:LSY7f19a56bd06d48a0a15dba53f' width='349' height='316' alt="Screenshot 2025-06-19 at 11.20.43 PM.png"></img></span></li><li id='temp:C:LSYd81579aba4434804acf74df64' class='parent'>The included apps should look like this for an admin: 
+
+<br/></li><ul><li id='temp:C:LSYbd0f681705314b3581d996b0b' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/q0W0UJ4WD9IGuehM2BveJg?a=9jfMAyF7lxWna5jIQu4NsIabNDBT0Du5XZxav93e8usa' id='temp:C:LSYbd0f681705314b3581d996b0b' width='800' height='433' alt="Screenshot 2025-06-25 at 5.01.04 PM.png"></img></span></li><li id='temp:C:LSY8e479cb8f966410f921dc0108' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/lk54ZZosDofdGC3z3KBrmg?a=Ut2NXAlDwI0UcRy14AEgfDZBOcgdzTwRAIWUHATgjCoa' id='temp:C:LSY8e479cb8f966410f921dc0108' width='800' height='434' alt="Screenshot 2025-06-25 at 5.01.23 PM.png"></img></span></li></ul></ul><li id='temp:C:LSY0fe6f913edce4dd1b4fae857a' class='parent'><b>Setup a Facility Security Officer User (Admin Required)</b>
+
+<br/></li><ul><li id='temp:C:LSY4adab235b97440e0a5c9b6b88' class=''>Follow these instructions for users who will be your FSO users. FSOs are users who need access to the <b>INDSEC FSO</b> app and the <b>INDSEC Employee</b> app.
+
+<br/></li><li id='temp:C:LSYbe2615f578e74660b7aef4c2f' class='parent'><b>Steps:</b>
+
+<br/></li><ul><li id='temp:C:LSY1da61c54bc2f4ae195e51059a' class='parent'>Create a New User &amp; Assign a Profile
+
+<br/></li><ul><li id='temp:C:LSYd1261139a7a84272b3c6ef4f6' class='parent'>Follow your organization's standard process to create a new Salesforce User (skip this step if the User already exists).
+
+<br/></li><ul><li id='temp:C:LSY2b455a49d8fa43b49eaa6ecdd' class='parent'>Assign or Create a new Salesforce Profile to the User
+
+<br/></li><ul><li id='temp:C:LSYfab0e36e7634499d88dddf547' class=''>For example, clone the Standard Platform Profile and name it “Standard Platform - FSO”
+
+<br/></li></ul></ul></ul><li id='temp:C:LSY50df75c0a93348178ee3d27ef' class='parent'>Assign the <b>INDSEC - Security Team </b>permission set to the new or existing User:
+
+<br/></li><ul><li id='temp:C:LSYeed6ee16c85e41f4b7c147363' class=''>Search Setup for <b>Permission Sets</b>: 
+
+<br/></li><li id='temp:C:LSY80f4ebb050ad4090bc5c8f3a0' class=''>Locate the Industrial Security Permission Sets: 
+
+<br/></li><li id='temp:C:LSY33c347e21bb8457fba77948cb' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/oXETRVECW239QAJ_1OIY_w?a=JWkiTTO5rhW9E0ZDJPIxQBphEiO4aM7LZ3zYglGO4Goa' id='temp:C:LSY33c347e21bb8457fba77948cb' width='800' height='435' alt="Screenshot 2025-06-25 at 5.12.55 PM.png"></img></span></li><li id='temp:C:LSY3d0a2234aefa455b93bfb7bc1' class=''>Select the <b>INDSEC - Security Team</b> permission set
+
+<br/></li><li id='temp:C:LSY287c9e1b4a9f44cfac48b181a' class=''>Select <b>Manage Assignments</b>
+
+<br/></li><li id='temp:C:LSY866135c206e2420896930adc9' class=''>Add your FSO users to the permission set
+
+<br/></li></ul><li id='temp:C:LSY4e2b1ac0033e4298af9b87ccc' class='parent'>This will grant the user access to the <b>INDSEC FSO</b> app
+
+<br/></li><ul><li id='temp:C:LSYf0906d374e7c43c3af5db809e' class=''>Note: discuss with your admin that you may need to grant additional System/App Permissions such (Create and Customize Dashboards or Run Flows). 
+
+<br/></li><li id='temp:C:LSY8a44f80b91b1457598ebc2dca' class=''>FSO will need access to view all Users (this is a System Permission)
+
+<br/></li></ul></ul></ul><li id='temp:C:LSYb73028de4f684f39a7ff09e58' class='parent'><b>Activate and Assign Industrial Security Lightning Page Layouts</b>
+
+<br/></li><ul><li id='temp:C:LSY8659232cfade480aabd190a7b' class=''>Navigate to <b>Setup</b>.
+
+<br/></li><li id='temp:C:LSYe4dc4dec626c443eb1c506709' class=''>In the <b>Quick Find</b> box, type: <b>Lightning App Builder</b>.
+
+<br/></li><li id='temp:C:LSY1ddf7dec4207450b8b61eb449' class=''>Select <b>Lightning App Builder</b>.
+
+<br/></li><li id='temp:C:LSY9ab7f7228b16458cbd0c8cafc' class='parent'>Locate the Lightning Pages for Industrial Security (they start with <code>INDUST SEC</code> or <code>INDSEC</code>):
+
+<br/></li><ul><li id='temp:C:LSY3f1a2f8994ff454e954cf8909' class=''>Pages ending with <b>Employee View</b> → Assign to Employee profiles.
+
+<br/></li><li id='temp:C:LSY9148d906c6494353b0ab1992e' class='parent'>Pages ending with <b>FSO View</b> → Assign to FSO profiles or System Admins.
+
+<br/></li><ul><li id='temp:C:LSYdadbb623e2804ca7847de2d74' class=''> (ie <b>INDSEC - Individual Record Page</b>) 
+
+<br/></li></ul></ul><li id='temp:C:LSY724690fe4bfa407294a22b9f5' class=''><span data-section-style='11' style='max-width:81%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/XAQMn1tD6-AdpBBLjOl9NQ?a=4MczUXe40vJmGkFa28IoaJrP7z6FuKtG4AsQhHrGNdUa' id='temp:C:LSY724690fe4bfa407294a22b9f5' width='653' height='356' alt="Screenshot 2025-06-20 at 12.01.14 AM.png"></img></span></li><li id='temp:C:LSY284c80d0eba14431ac786531f' class=''>Click <b>Edit</b> next to the desired Lightning Page to open the app builder interface:
+
+<br/></li><li id='temp:C:LSY8d848f9332844da48f5e0a1c3' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/yooj94c8IUW1xWV4_B2qMA?a=dt3G8Mf4q99GdghvhIePbuoIiJgaaTba0GShQnypHPMa' id='temp:C:LSY8d848f9332844da48f5e0a1c3' width='800' height='433' alt="Screenshot 2025-06-25 at 5.24.09 PM.png"></img></span></li><li id='temp:C:LSY0c6fc3d728ef40eaa616f2ccb' class=''>In the Lightning App Builder interface, click “<b>Activation...“ </b>in the upper right corner
+
+<br/></li><li id='temp:C:LSY1274d5582db942febe25011a7' class=''>In the modal, select the APP<b>, RECORD TYPE, AND PROFILE</b> tab
+
+<br/></li><li id='temp:C:LSY44b9646bccc246c5a8479a385' class=''>Click <b>Assign to Apps, Record Types, and Profiles</b>.
+
+<br/></li><li id='temp:C:LSY9d2ba2f3155e4c3e90eb27daf' class=''><span data-section-style='11' style='max-width:77%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/co3qrGEXjiKgD4s89NmBjQ?a=04Kkd6cqofA368gZO7izcj4k8o0J7cbAGW9JgooHHF8a' id='temp:C:LSY9d2ba2f3155e4c3e90eb27daf' width='619' height='336' alt="Screenshot 2025-06-20 at 12.02.49 AM.png"></img></span></li><li id='temp:C:LSYdaa1d449964445e7baa57180d' class='parent'>Choose Apps for visibility:
+
+<br/></li><ul><li id='temp:C:LSYe966ea62b7c942ec9463272c5' class=''><code>INDSEC - Employee</code>
+
+<br/></li><li id='temp:C:LSY259f89086e8742858ebd4d957' class=''><code>INDSEC - FSO</code>
+
+<br/></li></ul><li id='temp:C:LSY8910d49078744171a47fa5072' class=''>Click <b>Next</b>.
+
+<br/></li><li id='temp:C:LSYff47db7cf96546299f7cb6c41' class=''>Select <b>Desktop and Phone</b>.
+
+<br/></li><li id='temp:C:LSY83f0014342974f74871b90a30' class=''>Click <b>Next</b>.
+
+<br/></li><li id='temp:C:LSYf5dd11e891ab453f851dfd1e8' class='parent'>Choose the appropriate <b>Record Type</b> (e.g., select “Adoption” for Adoption Page Layout).
+
+<br/></li><ul><li id='temp:C:LSY937bd334a67a424db35b9542b' class=''>NOTE - for the <b>INDSEC - Individual Record Page</b>, add it to all Record Types
+
+<br/></li><li id='temp:C:LSYd07ea195f7344409a4320ed16' class=''><span data-section-style='11' style='max-width:77%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/PBx0Fd_SY_dibWjm-4RYnQ?a=a94iHNpEu0kEPEbXu7DNlL0ewx7QGS51j7XAlP0IWn0a' id='temp:C:LSYd07ea195f7344409a4320ed16' width='617' height='383' alt="Screenshot 2025-06-25 at 5.26.01 PM.png"></img></span></li></ul><li id='temp:C:LSY23a0099306be41aebbdabc979' class=''>Click <b>Next</b>.
+
+<br/></li><li id='temp:C:LSY322e6d94916b46ee879bccbe1' class='parent'>Choose the <b>Profile</b>:
+
+<br/></li><ul><li id='temp:C:LSYa78c975f5948479abca5a4f31' class=''>For all Employee Views → Employee profiles.
+
+<br/></li><li id='temp:C:LSYf91378f88ac14425b7dba0724' class=''>For all FSO Views → FSO profiles and System Admins.
+
+<br/></li></ul><li id='temp:C:LSYae863175d33f4bbe823349c65' class=''>Review assignments.
+
+<br/></li><li id='temp:C:LSYb7289316c8e44fd0abbb9cabd' class=''>Click <b>Save</b>.
+
+<br/></li></ul><li id='temp:C:LSY925c4babf1a94b298a02af1c6' class='parent'><b>Actions Required by the FSO Upon Receiving Access to the Industrial Security Apps:</b>
+
+<br/></li><ul><li id='temp:C:LSYd3e2c40a58564be5bf1776b7d' class=''>Have the FSO user login to the org
+
+<br/></li><li id='temp:C:LSY0dd16cec06344362b62186aff' class=''>Navigate to the <b>INDSEC FSO</b> App
+
+<br/></li><li id='temp:C:LSY4ad0de0b07e44934b9455502d' class=''>The layout should look like this: 
+
+<br/></li><li id='temp:C:LSYa5bb236a422349129b20f474b' class=''><span data-section-style='11' style='max-width:89%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/p0Pxmf9O9ixr1tOKKUNccA?a=KYhSzu6qkI0nXdAza3MRHtBlatIwEur8oNaRkMPHRwka' id='temp:C:LSYa5bb236a422349129b20f474b' width='717' height='389' alt="Screenshot 2025-06-19 at 11.46.47 PM.png"></img></span></li><li id='temp:C:LSY9c1f1442b8fb4f4598f83ad85' class=''>Select the<b> Employee Management</b> tab
+
+<br/></li><li id='temp:C:LSY5301179af92e4539a8cba8c74' class=''>Select the “<b>+ New Individual</b>” button to launch a screen flow to add the FSO user as an Individual:
+
+<br/></li><li id='temp:C:LSY203dc050f39e4d86896c89da1' class=''><span data-section-style='11' style='max-width:90%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/7mv5QPN-92vN_Ont9-REkA?a=KwPyaG1nH6nzC7GnCRQhRX6NMbMEauRDmPf7GEP1c9ga' id='temp:C:LSY203dc050f39e4d86896c89da1' width='723' height='409' alt="Screenshot 2025-06-25 at 5.55.56 PM.png"></img></span></li><li id='temp:C:LSYf3dedc49e30a4b66af2459957' class=''>In the Individual Type field, select “<b>Security Officer</b>”:
+
+<br/></li><li id='temp:C:LSY73c50dd1f97a49c0998664fcf' class=''><span data-section-style='11' style='max-width:91%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/hRolj2nsYVLhcuw2th1hwQ?a=spYqdgKDdZjcfQocaV9eWmKRrB0Wqy6ik3E0pTae1OMa' id='temp:C:LSY73c50dd1f97a49c0998664fcf' width='732' height='413' alt="Screenshot 2025-06-25 at 5.56.47 PM.png"></img></span></li><li id='temp:C:LSY4f9c019e637f4159b2becb65c' class='parent'>Search and select the User record for this Individual: 
+
+<br/></li><ul><li id='temp:C:LSYa95a44ea618048679716391f6' class=''><b>Note:</b> The<b> User</b> field is required. A Salesforce User record must be created before you can create an Individual record in the Industrial Security app.
+
+<br/></li></ul><li id='temp:C:LSYc6a8befe6922476ba79d7bbc1' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/wyA4lRde-1HEOJr_3kcM_A?a=HYmHpuV4Xf7xkLXsgaigqdamzt6aFNUssUaf9tqvWewa' id='temp:C:LSYc6a8befe6922476ba79d7bbc1' width='800' height='452' alt="Screenshot 2025-06-25 at 5.57.32 PM.png"></img></span></li><li id='temp:C:LSY8e37b74488d94ccbb28fefe62' class=''>Fill out the remaining Employee Details then click <b>Next</b>
+
+<br/></li><li id='temp:C:LSY55d0d880efde40e0ae6daa9a5' class='parent'>Fill out the Employment &amp; Role Details then click <b>Next</b>
+
+<br/></li><ul><li id='temp:C:LSYb77c9e9fbecf4d6aab8b5e9c8' class=''>Note: the first 5 digits of the Social Security number will be encrypted upon saving
+
+<br/></li></ul><li id='temp:C:LSYe14a419533c74b138b35e8204' class=''>Fill out the Security &amp; Clearance Details  then click <b>Next</b>
+
+<br/></li><li id='temp:C:LSY5e61db23eca24222b410d99bb' class=''>Once submitted, <b>refresh</b> the Employee Table to see the newly created Employee record:
+
+<br/></li><li id='temp:C:LSY3112f14206fe464e8ade57cac' class=''><span data-section-style='11' style='max-width:98%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/kPNJnWKlzGX_gTnWdTYqDw?a=uFiq2aLhPa9lYaah853TVhfPVZn4y8iQDCFhRkQTOpYa' id='temp:C:LSY3112f14206fe464e8ade57cac' width='788' height='446' alt="Screenshot 2025-06-25 at 6.07.03 PM.png"></img></span></li><li id='temp:C:LSY2edef210e8474c729bd88ae28' class=''>Click on the name of the Employee to access their Industrial Security Individual page: 
+
+<br/></li><li id='temp:C:LSY7afc06b6ba7f4d14a279e3006' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/hFwNb6Jxnz19bR3QSVgG3Q?a=NaBIgOxpkj8cbWYG8MpfEG74vAp5j5xbvUAzUS8jpWMa' id='temp:C:LSY7afc06b6ba7f4d14a279e3006' width='800' height='452' alt="Screenshot 2025-06-25 at 6.07.54 PM.png"></img></span></li><li id='temp:C:LSY18c9e4f8835b4ad88f4c67a89' class='parent'>The user can now start to add items such as 
+
+<br/></li><ul><li id='temp:C:LSY0e6a6360ed114a7390f7a890a' class='parent'>Passports
+
+<br/></li><ul><li id='temp:C:LSYcc9b5f55484448909e1922231' class=''>Required to submit Foreign Travel events
+
+<br/></li></ul><li id='temp:C:LSY93c3c0b8458e44aea1634f86c' class='parent'>Emergency Travel Contacts
+
+<br/></li><ul><li id='temp:C:LSY90b65d8d4e13492fa9c425d63' class=''>Required to submit Foreign Travel events
+
+<br/></li></ul><li id='temp:C:LSYe15c39f1d9764ba2a58af785c' class=''>Personal Adresses
+
+<br/></li><li id='temp:C:LSYac1fbf3c98574086b273e0123' class=''>Personal Phone Numbers
+
+<br/></li><li id='temp:C:LSYee271850b9a24486b20a7986e' class=''>Personal Email Addresses
+
+<br/></li></ul><li id='temp:C:LSYc27d917379804da38e5f29959' class=''>Note<b>:</b> the Individual profile picture will automatically sync with the Salesforce user profile image when updated:
+
+<br/></li><li id='temp:C:LSY51563bc1ff6b42099d2bf3e2c' class=''><span data-section-style='11' style='max-width:91%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/JE7wmU5fkHPP0nP_d7ejEQ?a=FzaEMRWaQ7ZLphF5O4VYUCcNLOWp5MDeNDnfXKdq92oa' id='temp:C:LSY51563bc1ff6b42099d2bf3e2c' width='730' height='412' alt="Screenshot 2025-06-25 at 6.10.44 PM.png"></img></span></li></ul><li id='temp:C:LSYe32d5e4e6f0540f993aa034db' class='parent'><b>FSOs: Follow these steps to set up Employee access in the FSO app.</b>
+
+<br/></li><ul><li id='temp:C:LSY2fd6474335024d8886d814064' class=''>Once a User has been created by an Admin (or if one already exists), follow these steps:
+
+<br/></li><li id='temp:C:LSYcf2bda7736884181bdbcec355' class='parent'><b>Configure the Employee in the Industrial Security App</b>
+
+<br/></li><ul><li id='temp:C:LSY18b5bf6a8afd4979b6bd4eb77' class=''>Log in as an FSO User
+
+<br/></li><li id='temp:C:LSY7a4461db3e934d6186bbd4749' class=''>Navigate to the <b>INDSEC FSO </b>app
+
+<br/></li><li id='temp:C:LSY00f42826d0bd49acb26279cee' class=''>On the Home page, select the <b>Employee Management </b>tab.
+
+<br/></li><li id='temp:C:LSY7963c9422d72486da97971298' class=''>Follow the same steps you used to create a new FSO, but select<b> Internal Employee</b> during the workflow:
+
+<br/></li><li id='temp:C:LSYafd4cb00a1d1480f84b520462' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/Tls1bi1xY69xE-feuyWPgA?a=oJ6JI9ObwkQmyk8Mbn04t9b8HgMd3SRZ7CHHa3VeI6sa' id='temp:C:LSYafd4cb00a1d1480f84b520462' width='800' height='453' alt="Screenshot 2025-06-25 at 6.14.45 PM.png"></img></span></li></ul><li id='temp:C:LSY18dc2a2062ef4b3fb697a6ff2' class='parent'><b>Emergency Contacts</b>
+
+<br/></li><ul><li id='temp:C:LSYee3bd7bcd9ed4d3abd43806ef' class=''>Make sure at least one Emergency Contact is added to their profile before they can submit Reportable Events
+
+<br/></li></ul><li id='temp:C:LSY341cb22d0e0e400e8bd06fd13' class='parent'><b>Passports</b> 
+
+<br/></li><ul><li id='temp:C:LSY0f3c29180cd24bf8a6f24b3e0' class=''>Make sure at least one Passport is added to their profile before they can submit Reportable Events
+
+<br/></li><li id='temp:C:LSYdeea720ea39d4d0b86a6dfbba' class=''>Dynamic passport alerts will be shown on their profile only if the active passport on file expires within 2 months.
+
+<br/></li><li id='temp:C:LSY2858f50572a042bd98253c1cb' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/vsHEqeMD4hYMJxwK9YGq5Q?a=rN0Ho9JwKBizZRq9MF8m3MVWAYmGfiZ7JMEczARUhd0a' id='temp:C:LSY2858f50572a042bd98253c1cb' width='800' height='436' alt="Screenshot 2025-06-20 at 12.56.42 AM.png"></img></span></li></ul></ul><li id='temp:C:LSY4c9c65a9a56d45e4b61d73ba1' class='parent'><b>Set Up the Facility Security Officer Queue</b>
+
+<br/></li><ul><li id='temp:C:LSY5a89b514ad1547bdacbf880d5' class=''>This app uses a <b>Queue</b> to automatically assign all <b>Reportable Events</b> to a dedicated queue as the <b>Owner</b>, managed by the “<b>INDSEC - Assign RE to FSO Queue”</b> unmanaged flow.
+
+<br/></li><li id='temp:C:LSYa2a18c88d98a42ae904e8b75a' class=''>NOTE - the Reportable Event Tile Flows will <b>fail</b> if this is not setup
+
+<br/></li><li id='temp:C:LSYd91fd70345944a69a7b3f104d' class='parent'><b>Steps:</b>
+
+<br/></li><ul><li id='temp:C:LSY63ad88965b79465584c26d6a9' class=''>Go to <b>Setup</b>.
+
+<br/></li><li id='temp:C:LSY5a345d587fa44abdbf497a2ec' class=''>In the <b>Quick Find</b> box, search for <b>Queues</b> and select it under the <b>Users</b> section.
+
+<br/></li><li id='temp:C:LSY147bfa745e4244fbba7190af7' class=''>Click <b>New</b>.
+
+<br/></li><li id='temp:C:LSY69da2ae950534a90830a98466' class=''><span data-section-style='11' style='max-width:61%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/Zca0nEETuB6ABJIsz0BGPA?a=9GHARbq21oESIZte3xygWTihMOCTxEtdkRrhGbQLdbsa' id='temp:C:LSY69da2ae950534a90830a98466' width='491' height='149' alt="Screenshot 2025-06-18 at 9.16.15 PM.png"></img></span></li><li id='temp:C:LSYd2f4fdb22ace4652ba73fad65' class='parent'>Enter:
+
+<br/></li><ul><li id='temp:C:LSYec3d8d24ef234c5d967533a25' class=''><b>Label:</b> e.g., <i>FSO Team</i>
+
+<br/></li><li id='temp:C:LSYfe850b28aee14e87b46948b7a' class=''><b>Queue Name</b>
+
+<br/></li><li id='temp:C:LSYb6fbc728fedc442493e0ac2aa' class=''><b>Queue Email</b> (optional)
+
+<br/></li><li id='temp:C:LSY6113f581fc9a43febbe01cd58' class=''><b>Description</b> (optional)
+
+<br/></li><li id='temp:C:LSY04614c8b5f6443fdad5966605' class=''><b>Omni-Channel Routing</b> (optional)
+
+<br/></li></ul><li id='temp:C:LSYdf6868ee68fc46378319027b6' class=''>Under <b>Available Objects</b>, select <b>Reportable Event</b>.
+
+<br/></li><li id='temp:C:LSY0b268725898145b99714f8e40' class=''>Under <b>Queue Members</b>, add the users who should be part of the queue.
+
+<br/></li><li id='temp:C:LSY7f10195b2d3c4a848405d9261' class='parent'>Ensure the <b>INDSEC - Assign RE to FSO Queue</b> flow is configured to assign the <b>OwnerId</b> to this queue:
+
+<br/></li><ul><li id='temp:C:LSYf34747467c6049ab820142f4f' class=''>NOTE - Most Industrial Security components will start with the INDSEC prefix 
+
+<br/></li></ul><li id='temp:C:LSYe09659180d0744f2adf9db0bd' class=''><span data-section-style='11' style='max-width:75%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/yDqu7VuIuflf4pHczAYqPw?a=9KpNBsv4Iw1tlwwFALDka0acM3nNwKdiJNM0CztbabEa' id='temp:C:LSYe09659180d0744f2adf9db0bd' width='601' height='335' alt="Screenshot 2025-05-28 at 12.46.15 PM.png"></img></span></li></ul></ul><li id='temp:C:LSYe5d19ed9bf5d436abe2a0b6f0' class='parent'><b>Adjust the Foreign Travel Report Attestation Document (optional)</b>
+
+<br/></li><ul><li id='temp:C:LSY54d664b6fa374bd9bf31baf2c' class='parent'>There is a Subflow within the I<b>NDSEC - Foreign Travel Report</b> flow that displays a travel attestation document. This document can be adjusted to your own liking: 
+
+<br/></li><ul><li id='temp:C:LSYad22a6fd6e294a3e817f4e487' class=''>Open the <b>Files</b> object from the App Launcher
+
+<br/></li><li id='temp:C:LSYab0ab70151b24f4dade40bf99' class=''>Upload your document of choice (PDF)
+
+<br/></li><li id='temp:C:LSY72fdd1b37a464228a0dc49b09' class=''>Click on the File record that stores the document and copy the record ID from the URL 
+
+<br/></li><li id='temp:C:LSY6122869217684f8bade0077f9' class=''>Open up the Developer Console by clicking the gear icon → Developer Console
+
+<br/></li><li id='temp:C:LSY652e590289074fe79721d147c' class='parent'>Enter the following SOQL query to retrieve the Version ID in the Query Editor tab in the Console
+
+<br/></li><ul><li id='temp:C:LSY033fa17b4f2c4a8b8e32f01f6' class=''><i><code>SELECT Id, Title, ContentSize, CreatedDate, VersionNumber</code></i>
+
+<br/></li><li id='temp:C:LSY162b58f27c044d1a997c73fd9' class=''><i><code>FROM ContentVersion</code></i>
+
+<br/></li><li id='temp:C:LSYc6af781113c64b8889c14fd1b' class=''><i><code>WHERE ContentDocumentId = 'YOUR_RECORD_ID'</code></i>
+
+<br/></li><li id='temp:C:LSYcf27f353007640ccb6e44c66a' class=''><i><code>ORDER BY VersionNumber DESC</code></i>
+
+<br/></li><li id='temp:C:LSY4db6ae10758346b1a352b0cfc' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/OuYDCwmoJoA9nMe-Kcw14A?a=wMYVJanH2U8YipvFwTskBjEkt3Sb8xtZYYq3Pza3aRsa' id='temp:C:LSY4db6ae10758346b1a352b0cfc' width='800' height='366' alt="Screenshot 2025-05-29 at 11.00.43 AM.png"></img></span></li></ul><li id='temp:C:LSY2337710562864ac7adbba23ba' class=''>Open the <b>INDSEC - Counterintelligence Tips for Safe Travel</b> flow 
+
+<br/></li><li id='temp:C:LSY2b626af19744402ab0c4da302' class=''>Open the<b> Acknowledgement Screen</b> flow component 
+
+<br/></li><li id='temp:C:LSY387bf1230d84458eb976388ec' class='parent'>Select the <b>View PDF File</b> section and enter the following attributes: 
+
+<br/></li><ul><li id='temp:C:LSYcfd619b394d5474db9a8f55c3' class=''>Content ID: Enter the record ID here
+
+<br/></li><li id='temp:C:LSYb536c672213e46b5aa481c83a' class=''>Version ID: Enter the ID in the first column in the SOQL query (ID)
+
+<br/></li></ul><li id='temp:C:LSYba0d40a8c4bd4363abee0d4f0' class=''>Save the flow as a new version 
+
+<br/></li><li id='temp:C:LSY58d09949e6ca4c37b8eb618e3' class=''>Select <b>Activate</b>
+
+<br/></li><li id='temp:C:LSY445e44940a6c4267b27c76ada' class=''>The document will now be shown embedded in the flow 
+
+<br/></li></ul></ul><li id='temp:C:LSY87518de966c34e8199ddb2a9d' class='parent'><b>Refresh or Schedule the Department of State Travel Warnings Integration</b>
+
+<br/></li><ul><li id='temp:C:LSYa51aad7e6a554b8ea7eef9078' class='parent'>Manual Refresh Steps:
+
+<br/></li><ul><li id='temp:C:LSYb142d115e03f4470966ff9b1c' class=''>Navigate to the <b>INSEC FSO</b> app as an FSO user
+
+<br/></li><li id='temp:C:LSY147749db56f542099d2cd9cb4' class=''>Select the <b>Travel Advisory Management</b> tab on the Home Page
+
+<br/></li><li id='temp:C:LSY432173f5555642adadb73c8ed' class=''>Click “<b>Retrieve Now</b>” 
+
+<br/></li><li id='temp:C:LSYe711908ed1bc4645ad7a45ef4' class=''><b>Refresh</b> the Current Travel Advisories list (refresh icon next to New)
+
+<br/></li><li id='temp:C:LSY36e7ca78a0b1427c9716422db' class=''><span data-section-style='11' style='max-width:89%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/JFMkB7zJPrdeu_VAt1mB6A?a=75omVrDyoIF5S475llyziX4eTbdBbqRuz0JdOSy1uFYa' id='temp:C:LSY36e7ca78a0b1427c9716422db' width='717' height='405' alt="Screenshot 2025-06-25 at 6.17.10 PM.png"></img></span></li></ul><li id='temp:C:LSY30bf29ab70bb4ef68986e825f' class=''>Note - the Travel Advisory icons are stored in <b>Static Resources</b> in Setup and can be edited. 
+
+<br/></li><li id='temp:C:LSY2a2ed208f12f41ea900ba2ed1' class='parent'><b>Automatic</b> Scheduling Steps:
+
+<br/></li><ul><li id='temp:C:LSYc06d8417c3e14647b4fcf92c2' class=''>Navigate to <b>Setup</b>
+
+<br/></li><li id='temp:C:LSYbd926fad8b474d24822017817' class=''>Search for “Scheduled” 
+
+<br/></li><li id='temp:C:LSY9adf6612e12c4428bcd8709f9' class=''>Select “Scheduled Jobs” under Jobs
+
+<br/></li><li id='temp:C:LSY7cd7465a55264c75b777df68a' class=''>Select the <b>Schedule Apex</b> button
+
+<br/></li><li id='temp:C:LSY8afc5d9dd5e5481d9f4f0b46d' class=''>Enter a Job Name such as “Travel Warning Job” 
+
+<br/></li><li id='temp:C:LSY4a055b716d254b88af764d59e' class=''>Apex Class: <b>TravelAdvisoryHandler</b>
+
+<br/></li><li id='temp:C:LSY3532e155022e45549d12610bf' class=''>Schedule it to run Daily, Weekly, or Monthly 
+
+<br/></li></ul></ul></ul></div><br/>
+
+<h3 id='temp:C:LSY5429238747c94e96ad4a71869'><u><b>7. Optional Setup &amp; Configuration</b></u></h3>
+
+<div data-section-style='6' class="" style=""><ul id='temp:C:LSY61d19c456da446bfbc3479e49'><li id='temp:C:LSY2a412c97e31447d688e5c1acf' class='parent' value='1'><b>Managing Employee Alerts</b>
+
+<br/></li><ul><li id='temp:C:LSYf95011e3e36c4934893bfc98d' class=''>Custom alerts can be created by an FSO user and displayed on the INDSEC Employee app Home page to all employees. 
+
+<br/></li><li id='temp:C:LSY311b1d8cccf34c7193af89135' class='parent'>To create an alert: 
+
+<br/></li><ul><li id='temp:C:LSY245b4e61b80b4eef8ba2f6889' class=''>Navigate to the <b>INDSEC FSO</b> app 
+
+<br/></li><li id='temp:C:LSY76658cd6c80348f5af4a551ae' class=''>Select the <b>Manage Alerts</b> tab on the Home Page: 
+
+<br/></li><li id='temp:C:LSYebae50e8f6fd4cf1bd450a185' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/Ybqv3TLTGzKAn0AKj1FgbQ?a=vDaCEdzk2e0fb1RN0jew6TeKVYcqlaVkdVBAYyPZwBUa' id='temp:C:LSYebae50e8f6fd4cf1bd450a185' width='800' height='432' alt="Screenshot 2025-06-25 at 9.54.40 PM.png"></img></span></li><li id='temp:C:LSY7c226d4ccf9f47e28556dff6d' class=''>Select <b>New</b> on the All Alerts table
+
+<br/></li><li id='temp:C:LSYc8d03590fbdc4d548f85902e7' class=''>Fill out the Alert details: 
+
+<br/></li><li id='temp:C:LSY535c58866d2c4fb2802115c54' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/tUwa3O5iDnxzkspp-lP4dA?a=EhB5LLMXBvisJRAtIGrrt5Lh6uAdxyGiwgZnajsaYa0a' id='temp:C:LSY535c58866d2c4fb2802115c54' width='800' height='432' alt="Screenshot 2025-06-25 at 10.02.46 PM.png"></img></span></li><li id='temp:C:LSYfc271308802d4ebb873328bb6' class=''>Check the <b>Is Active</b> box if you want to activate this Alert
+
+<br/></li><li id='temp:C:LSYaf08bfe480d44cc08360406a8' class=''>Select <b>Save</b>
+
+<br/></li><li id='temp:C:LSYa7144e8cfc37482cae84361b1' class=''>Navigate to the <b>INDSEC Employee</b> app. The new alert will now be displayed:
+
+<br/></li><li id='temp:C:LSY8d377e1c02d04f5494297b2ac' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/xzOR7J8AmVoWE9QJmoPSFg?a=59fDsIJPgJaTfaLqGMWsnpwTarHkFZLSsvTWXVMEVTYa' id='temp:C:LSY8d377e1c02d04f5494297b2ac' width='800' height='434' alt="Screenshot 2025-06-25 at 10.03.32 PM.png"></img></span></li><li id='temp:C:LSYf5e2cadb32064c8e87ac8e0c5' class=''>Select <b>Expand</b> to see more details: 
+
+<br/></li><li id='temp:C:LSYae09cd8c3bc348b9b26c6874a' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/Xw65gOfdz5C9dcPW1kXjDA?a=OIoQkF2m5UzPgaNur8nUR5a24RjIdgo5eaEFHtG4oKMa' id='temp:C:LSYae09cd8c3bc348b9b26c6874a' width='800' height='434' alt="Screenshot 2025-06-25 at 10.04.30 PM.png"></img></span></li><li id='temp:C:LSY68dfedfd80704a24a88c7964d' class=''>Select <b>Save</b>
+
+<br/></li><li id='temp:C:LSY3e89874eb1c9462f8823cbf05' class=''><b>Note:</b> Only 1 alert can be active at a time. Uncheck an alert to disable it. 
+
+<br/></li><li id='temp:C:LSYe6e56b32060e4045a39521cce' class=''>To manage your alerts, return to the INDSEC FSO app to see the full list of alerts:
+
+<br/></li><li id='temp:C:LSY84fce2f93054420ca33bc7cef' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/CmsDaavslfC02pLvMj8lhw?a=qhZkIAqJtIQYymCjhZ4GHMxE6ksaWQzlM3OgCgarT70a' id='temp:C:LSY84fce2f93054420ca33bc7cef' width='800' height='433' alt="Screenshot 2025-06-25 at 10.08.08 PM.png"></img></span></li><li id='temp:C:LSYd7c9c3b08d0049c5910f169d8' class=''>Select the pencil icon on the <b>All Alerts</b> table to manage alerts or create new alerts:
+
+<br/></li><li id='temp:C:LSY941eb4bdabfa4cbb972493f89' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/Flps-ILkcvtcS5HigkqaDg?a=cGs5a1JA4Vp0Okxbs8rCCUVDs9a5u5trKdz4GXvCwSMa' id='temp:C:LSY941eb4bdabfa4cbb972493f89' width='800' height='431' alt="Screenshot 2025-06-25 at 10.08.48 PM.png"></img></span></li></ul></ul><li id='temp:C:LSY8e5688bba360421f94d77a4ec' class='parent'><b>Adjusting the INDSEC Employee Home Tiles</b>
+
+<br/></li><ul><li id='temp:C:LSYd1943654cc904f6f870129478' class='parent'>The Home Tiles are controlled by a Lightning Web Component (flowLauncherTiles) that can be adjusted: 
+
+<br/></li><ul><li id='temp:C:LSYfae4e0ecba89436eae179f33f' class=''><span data-section-style='11' style='max-width:91%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/vpvkUOF-ke4G8UAmBoEjuA?a=AappPC8oeQg6VMVQmGNrkNrUFzQlrYcZoUkPdI8krWsa' id='temp:C:LSYfae4e0ecba89436eae179f33f' width='733' height='432' alt="Screenshot 2025-06-25 at 9.52.26 PM.png"></img></span></li><li id='temp:C:LSY405ce515ef054e15b30f3277e' class=''>To adjust, search for <b>Custom Metadata Types</b> in Setup:
+
+<br/></li><li id='temp:C:LSYc8459215d92b4e9f85f36823c' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/DwZRz2MufFbZU3cC8WBJ8g?a=1yVnbZiVq1tvA8JUchjKmm1yBdgZgdzBJIs2d9hbUAsa' id='temp:C:LSYc8459215d92b4e9f85f36823c' width='800' height='432' alt="Screenshot 2025-06-25 at 10.10.06 PM.png"></img></span></li><li id='temp:C:LSY505bcae10ba34b7a91eee1324' class=''>Select <b>Manage Records </b>next to the <b>Tile Flow Mapping</b> Custom Metadata Type
+
+<br/></li><li id='temp:C:LSY91537dd7977a4a4cbece14e9f' class=''>This will display all of the records that each represent a tile. 
+
+<br/></li><li id='temp:C:LSYfb5773f13a0e4e00a89b1c76c' class=''>Select Edit next to a record to edit tile details:
+
+<br/></li><li id='temp:C:LSYf81fb5e5dc6f4e388015a19ec' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/IzP4ZBKR-Ai0HICN4A9MiQ?a=L6aOazGANguv8T5bjmBaIg6dEweYNAm6Dqa3czauTcUa' id='temp:C:LSYf81fb5e5dc6f4e388015a19ec' width='800' height='433' alt="Screenshot 2025-06-25 at 10.11.58 PM.png"></img></span></li><li id='temp:C:LSY09423c05f8944b41a899c1210' class='parent'>The following fields can be customized:
+
+<br/></li><ul><li id='temp:C:LSY46892fe868ab4232935cfdf9c' class=''><b>Label</b> – The display name of the record.
+
+<br/></li><li id='temp:C:LSY7408b89fe54043588712e54b1' class=''><b>Tile Flow Mapping Name</b> – The API name used for referencing the record.
+
+<br/></li><li id='temp:C:LSY05e2f0647b0641fda16847939' class=''><b>Flow API Name</b> – The API name of the Flow that the tile will launch when clicked.
+
+<br/></li><li id='temp:C:LSY185e31ab9dee4f3e8e4da7240' class=''><b>Icon Name</b> – Specifies which icon will appear on the tile.
+
+<br/></li><li id='temp:C:LSY3efd2a8e80724c67ba3df1241' class=''><b>Sort Order</b> – Determines the tile’s position on the Home Page.
+
+<br/></li><li id='temp:C:LSY6d00cd944aa6421caa3935d81' class=''><b>Tile Label</b> – The visible title displayed on the tile.
+
+<br/></li><li id='temp:C:LSY463a92bf78a84492ad0f15d6a' class=''><b>Help Text</b> – Optional text shown when a user hovers over the tile for additional guidance.
+
+<br/></li></ul></ul></ul><li id='temp:C:LSY1050b327f3184344ab45ce749' class='parent'><b>Managing Toast Messages in Flows</b>
+
+<br/></li><ul><li id='temp:C:LSYc332551f234345d2ae09217e2' class=''>An included custom Aura component enables enhanced toast messages within Flows. This component allows you to display customizable messages with clickable links—such as directing users to newly created records. This Flow Action is pre-configured in most Flows included in the unmanaged package for immediate use.
+
+<br/></li><li id='temp:C:LSYdbcd464cd86e458993d41f240' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/XUmgERA8Fw2Gki7EOIpE-A?a=d0ubxex9AmJ0v2CIzgZVmxjJCKw3XY2KT7ORh3ZEoZ8a' id='temp:C:LSYdbcd464cd86e458993d41f240' width='800' height='158' alt="Screenshot 2025-06-25 at 10.26.53 PM.png"></img></span></li><li id='temp:C:LSYcd9ccacea1b6473196aaeeac6' class='parent'>Action Details:
+
+<br/></li><ul><li id='temp:C:LSY8b1527e03a554d51aabeaaa4a' class=''>Name: Show Toast Flow Action
+
+<br/></li><li id='temp:C:LSY950544cb154c4a659752f3508' class=''>API Name: component-c:ToastFlowActionAura
+
+<br/></li><li id='temp:C:LSY51d73678f422441a8521b7a81' class=''><span data-section-style='11' style='max-width:94%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/jXzvI_ibAnvKHNlaR8UVaQ?a=iM9ZtFLs5zcjlSgaMUwfzqE5CcmVeQ02dW4yiHlvtHsa' id='temp:C:LSY51d73678f422441a8521b7a81' width='757' height='413' alt="Screenshot 2025-06-25 at 10.24.30 PM.png"></img></span></li></ul><li id='temp:C:LSY2aeda8329cc340608b20140d0' class='parent'>The included flows already have this Action configured but you can edit the following: 
+
+<br/></li><ul><li id='temp:C:LSYe17c398123fb45519a8695d41' class='parent'>Create a Toast Message formula Variable if you wish to include an embedded link in the message:
+
+<br/></li><ul><li id='temp:C:LSY2e157b3368944218bb5f08566' class=''>In Flow Builder, click <b>New Resource</b>.
+
+<br/></li><li id='temp:C:LSYea138499acc3401a8d5eb9f5f' class=''>Set <b>Resource Type</b> to <b>Formula</b>.
+
+<br/></li><li id='temp:C:LSYce03b979b569486a8eba733a4' class=''>Set <b>Data Type</b> to <b>Text</b>.
+
+<br/></li><li id='temp:C:LSYdc78a56941634616b71f0bf72' class='parent'>Use the following formula to build a dynamic link to a record:
+
+<br/></li><ul><li id='temp:C:LSY1e0d99decad74bfcb129e2e3b' class=''><code>LEFT({!$Api.Partner_Server_URL_340},FIND("/services", {!$Api.Partner_Server_URL_340})) &amp; {!IndividualRecordId}</code>
+
+<br/></li></ul><li id='temp:C:LSY90293d7369ba476882badd06a' class=''>Replace <code>{!IndividualRecordId}</code> with any other record variable as needed.
+
+<br/></li><li id='temp:C:LSYbf1d8970752d41c99a84d1446' class=''>For example, to link to a newly created Reportable Event, use <code>{!varReportableEventId}</code> instead.
+
+<br/></li><li id='temp:C:LSY09ebc5693c5247ac85fc93332' class=''>Select <b>Save</b>
+
+<br/></li></ul><li id='temp:C:LSYf5117333f2094595841e75040' class='parent'>Set Input Values:
+
+<br/></li><ul><li id='temp:C:LSYfe6dac5dd1b547bea4c457988' class=''><b>Mode</b> – Only s<b>ticky</b> is supported at this time. The message will stay on screen until the user closes it or clicks the embedded link.
+
+<br/></li><li id='temp:C:LSY34270ac9cd0647d2aadf76e76' class=''><b>Toast Message</b> – The main body text of the message. Use plain text.
+
+<br/></li><li id='temp:C:LSY782e9198de18477e807a72703' class=''><b>Toast Title</b> – The heading/title shown in the toast.
+
+<br/></li><li id='temp:C:LSY86e40c4224ae41929bb59ad18' class=''><b>Variant</b> – Currently, only the default variant is supported.
+
+<br/></li><li id='temp:C:LSY269008a8ed5740178820e0f0f' class=''><b>URL Label</b> – The display text for the clickable link (e.g., "View Record").
+
+<br/></li><li id='temp:C:LSY5bca5ffca95e4a3e93e35e7a7' class=''><b>URL Link</b> – Insert the formula resource created earlier.
+
+<br/></li></ul><li id='temp:C:LSYc87cb084226f4090b5b190f82' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/CFQEtf1PusICbv2egmZyPQ?a=ObRm5ZHrMwilcmVsRCVXLrj3KijO0a42eIrKKFoFXXAa' id='temp:C:LSYc87cb084226f4090b5b190f82' width='800' height='491' alt="Screenshot 2025-06-25 at 10.35.38 PM.png"></img></span></li></ul></ul><li id='temp:C:LSYbf6b12404a6842a0ac2f3aa3f' class='parent'><b>Configuring List Editor Components</b>
+
+<br/></li><ul><li id='temp:C:LSYe3e58c4b9d384877b0d6191fc' class=''>As part of this unmanaged app, we’ve embedded the Salesforce Labs <b>List Editor</b> LWC. This component provides a cleaner, fully customizable experience for viewing and managing related lists. It also enables users to create, edit, and manage records directly within the table view.
+
+<br/></li><li id='temp:C:LSY4c1d26922fe840edbc157048c' class=''>This component is used across many of our Industrial Security Lightning pages—including the Home screen, as shown below:
+
+<br/></li><li id='temp:C:LSYe2530b9620cf45e48d687a7e4' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/TAHxGhQorqfzjskjoViIUg?a=Dwp7sR6k0K8DW1Ypl3w19JDvKsbIlMoGhlR41WbUvJka' id='temp:C:LSYe2530b9620cf45e48d687a7e4' width='800' height='314' alt="Screenshot 2025-06-25 at 10.48.10 PM.png"></img></span></li><li id='temp:C:LSYac614b2b3ef347f38f4a52785' class='parent'>To adjust the LWC:
+
+<br/></li><ul><li id='temp:C:LSYad1f07eedd9d4117bf65c9f9d' class=''>Select the <b>Setup</b> gear icon 
+
+<br/></li><li id='temp:C:LSY0f4085e46a9948bc85a24ed58' class=''>Select <b>Edit Page</b>
+
+<br/></li><li id='temp:C:LSY6c489dbab19a401180064eb61' class=''><span data-section-style='11' style='max-width:100%' class='show-border'><img src='https://quip.com/blob/LSYAAAFCeXL/Bqn7JKCSY3ccI41ZeuMnDg?a=IvL9gTO73Zv7aDiFTo78f0sJOFlNHHwZDK5o1sQpiD4a' id='temp:C:LSY6c489dbab19a401180064eb61' width='800' height='435' alt="Screenshot 2025-06-25 at 10.50.15 PM.png"></img></span></li><li id='temp:C:LSYdb5291c4578e40f1a1dd434a8' class=''>Click on the <b>List Editor</b> component
+
+<br/></li><li id='temp:C:LSY1cda293f2a1b481683a54411a' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/OTdrA6HL15EJ_qBTGghGXg?a=dBKaDESFG0UCE585iaSaLupaTXzUrPEZ1bkPGNvKlmEa' id='temp:C:LSY1cda293f2a1b481683a54411a' width='800' height='432' alt="Screenshot 2025-06-25 at 10.50.48 PM.png"></img></span></li><li id='temp:C:LSY17f5f8ef03054234986289b5a' class='parent'>In the right-hand panel, you can customize the following settings:
+
+<br/></li><ul><li id='temp:C:LSY3e38f5b04c54402395db33734' class=''>Object to display
+
+<br/></li><li id='temp:C:LSY83d12703d074471cb24ed8015' class=''>Fields shown in the table
+
+<br/></li><li id='temp:C:LSY8d5d1ec31a8247a6a5573e3f4' class=''>Component label
+
+<br/></li><li id='temp:C:LSYd036543a32054fdda36ddb540' class=''>Sort order (ascending or descending)
+
+<br/></li><li id='temp:C:LSY368a0485ad79401d9d14ca0b5' class=''>Header colors and styling
+
+<br/></li></ul></ul></ul><li id='temp:C:LSY8f5c7e90686c49a293e5895f1' class='parent'><b>Customize the INDSEC Employee Home Bookmarks</b><br> The Employee Home page includes a Rich Text component that displays helpful links and information. To update the content:
+
+<br/></li><ul><li id='temp:C:LSY5ac938aad3ee4cf5add349882' class=''>Click the <b>Setup</b> gear icon (top right)
+
+<br/></li><li id='temp:C:LSY3504378b21084f6291276e6e6' class=''>Select <b>Edit Page</b>
+
+<br/></li><li id='temp:C:LSY814891a6cb9a403ab97e14889' class=''>Click on the <b>Rich Text</b> component
+
+<br/></li><li id='temp:C:LSY3d1c1bb005ac40e3b83717c85' class=''>Edit the text as needed to customize bookmarks or instructions
+
+<br/></li><li id='temp:C:LSY98ee3223b5084f5f8068056e3' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/uMNcbY5Ytx5Z3m2maUSS3g?a=7szs3WcfrPk64YZ3Dhwv9zdRY3jTpqaO3LFwOlFHOgIa' id='temp:C:LSY98ee3223b5084f5f8068056e3' width='800' height='433' alt="Screenshot 2025-06-25 at 11.02.21 PM.png"></img></span></li></ul></ul></div><br/>
+
+<h3 id='temp:C:LSY0116de2fc6a741048e1486d39'><u>8. Flows</u></h3>
+
+This unmanaged package includes 29 fully customizable Flows, allowing you to tailor screens, fields, and logic to meet your organization’s specific needs. 17 of the included Flows are directly aligned with reportable event categories outlined in the official SEAD-3 directive.<br/>
+
+<br/>
+
+<div data-section-style='13'><table id='temp:C:LSYb26daadc5ceb4c19a29347aac' title='Sheet4' style='width: 57.6em'><tbody><tr id='temp:C:LSY62662d00c10b4ac781fb7f93d'><td id='temp:s:temp:C:LSY62662d00c10b4ac781fb7f93d;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#b0b3b2;text-align: left;vertical-align: top;'><br><b>Flow Name</b>
+
+<br/></td><td id='temp:s:temp:C:LSY62662d00c10b4ac781fb7f93d;temp:C:LSY6f68974e3ed042dcaad984661' style='background-color:#b0b3b2;text-align: left;vertical-align: top;'><br><b>Process Type</b>
+
+<br/></td><td id='temp:s:temp:C:LSY62662d00c10b4ac781fb7f93d;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='background-color:#b0b3b2;text-align: left;vertical-align: top;'><br><b>Objective</b>
+
+<br/></td><td id='temp:s:temp:C:LSY62662d00c10b4ac781fb7f93d;temp:C:LSYdd04d0585804497ba94b6043d' style='background-color:#b0b3b2;text-align: left;vertical-align: top;'><br><b>Description</b>
+
+<br/></td><td id='temp:s:temp:C:LSY62662d00c10b4ac781fb7f93d;temp:C:LSY410a02a4f3e74c44938ca1189' style='background-color:#b0b3b2;text-align: left;vertical-align: top;' class='bold'>SEAD-3 Related
+
+<br/></td></tr><tr id='temp:C:LSY6038c4fef6744824ba91934e8'><td id='temp:s:temp:C:LSY6038c4fef6744824ba91934e8;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Adoption</b>
+
+<br/></td><td id='temp:s:temp:C:LSY6038c4fef6744824ba91934e8;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY6038c4fef6744824ba91934e8;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY6038c4fef6744824ba91934e8;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report the adoption of a child, as required under SEAD-3.
+
+<br/></td><td id='temp:s:temp:C:LSY6038c4fef6744824ba91934e8;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY01de615eb006494d8993eec47'><td id='temp:s:temp:C:LSY01de615eb006494d8993eec47;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Application for a Foreign Passport</b>
+
+<br/></td><td id='temp:s:temp:C:LSY01de615eb006494d8993eec47;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY01de615eb006494d8993eec47;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY01de615eb006494d8993eec47;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Submit information about applying for or renewing a foreign passport.
+
+<br/></td><td id='temp:s:temp:C:LSY01de615eb006494d8993eec47;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY0cb8a39147bc4b6597c8147e7'><td id='temp:s:temp:C:LSY0cb8a39147bc4b6597c8147e7;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Arrest</b>
+
+<br/></td><td id='temp:s:temp:C:LSY0cb8a39147bc4b6597c8147e7;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY0cb8a39147bc4b6597c8147e7;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY0cb8a39147bc4b6597c8147e7;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used by employees to report an arrest or legal detention.
+
+<br/></td><td id='temp:s:temp:C:LSY0cb8a39147bc4b6597c8147e7;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYcbf8ba60bf4b47eea378a4145'><td id='temp:s:temp:C:LSYcbf8ba60bf4b47eea378a4145;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Assign RE to FSO Queue</b>
+
+<br/></td><td id='temp:s:temp:C:LSYcbf8ba60bf4b47eea378a4145;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSYcbf8ba60bf4b47eea378a4145;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Workflow Utility
+
+<br/></td><td id='temp:s:temp:C:LSYcbf8ba60bf4b47eea378a4145;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Routes a submitted reportable event to the appropriate FSO queue.
+
+<br/></td><td id='temp:s:temp:C:LSYcbf8ba60bf4b47eea378a4145;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY64605ea62f50408bb339a38a1'><td id='temp:s:temp:C:LSY64605ea62f50408bb339a38a1;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Attempt to Obtain Classified Information</b>
+
+<br/></td><td id='temp:s:temp:C:LSY64605ea62f50408bb339a38a1;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY64605ea62f50408bb339a38a1;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY64605ea62f50408bb339a38a1;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report suspicious attempts to access classified information.
+
+<br/></td><td id='temp:s:temp:C:LSY64605ea62f50408bb339a38a1;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYd3ef9d68c8c84cb99a41e86a7'><td id='temp:s:temp:C:LSYd3ef9d68c8c84cb99a41e86a7;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Continuing Association with Known Foreign National</b>
+
+<br/></td><td id='temp:s:temp:C:LSYd3ef9d68c8c84cb99a41e86a7;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYd3ef9d68c8c84cb99a41e86a7;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSYd3ef9d68c8c84cb99a41e86a7;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report ongoing contact with a known foreign national.
+
+<br/></td><td id='temp:s:temp:C:LSYd3ef9d68c8c84cb99a41e86a7;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYdc4250193841471ebcec0d7f6'><td id='temp:s:temp:C:LSYdc4250193841471ebcec0d7f6;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Counterintelligence Tips for Safe Travel</b>
+
+<br/></td><td id='temp:s:temp:C:LSYdc4250193841471ebcec0d7f6;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYdc4250193841471ebcec0d7f6;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Awareness &amp; Training
+
+<br/></td><td id='temp:s:temp:C:LSYdc4250193841471ebcec0d7f6;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Provides tips to employees for traveling safely abroad. This is used as a subflow in the Report Foreign Travel Flow.
+
+<br/></td><td id='temp:s:temp:C:LSYdc4250193841471ebcec0d7f6;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY8e4b95aab54e40e7a657ef61a'><td id='temp:s:temp:C:LSY8e4b95aab54e40e7a657ef61a;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Create New Individual</b>
+
+<br/></td><td id='temp:s:temp:C:LSY8e4b95aab54e40e7a657ef61a;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY8e4b95aab54e40e7a657ef61a;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Individual Record
+
+<br/></td><td id='temp:s:temp:C:LSY8e4b95aab54e40e7a657ef61a;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used by FSOs to create a new Individual record in the system.
+
+<br/></td><td id='temp:s:temp:C:LSY8e4b95aab54e40e7a657ef61a;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY43ef4770f62f4c2297a52d75e'><td id='temp:s:temp:C:LSY43ef4770f62f4c2297a52d75e;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Create New Visit Request</b>
+
+<br/></td><td id='temp:s:temp:C:LSY43ef4770f62f4c2297a52d75e;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY43ef4770f62f4c2297a52d75e;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Visit Request record
+
+<br/></td><td id='temp:s:temp:C:LSY43ef4770f62f4c2297a52d75e;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to initiate and submit a new visit request.
+
+<br/></td><td id='temp:s:temp:C:LSY43ef4770f62f4c2297a52d75e;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY32cc18d6252b44ac9fe5c1a2a'><td id='temp:s:temp:C:LSY32cc18d6252b44ac9fe5c1a2a;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Create Travel Warning Acknowledgement</b>
+
+<br/></td><td id='temp:s:temp:C:LSY32cc18d6252b44ac9fe5c1a2a;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSY32cc18d6252b44ac9fe5c1a2a;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Compliance
+
+<br/></td><td id='temp:s:temp:C:LSY32cc18d6252b44ac9fe5c1a2a;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Automatically creates an acknowledgement when a travel warning is present.
+
+<br/></td><td id='temp:s:temp:C:LSY32cc18d6252b44ac9fe5c1a2a;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSYc4fd213c415a48eeb780cfb6c'><td id='temp:s:temp:C:LSYc4fd213c415a48eeb780cfb6c;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Create Travel Warning Acknowledgement from Trip Leg</b>
+
+<br/></td><td id='temp:s:temp:C:LSYc4fd213c415a48eeb780cfb6c;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSYc4fd213c415a48eeb780cfb6c;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Compliance
+
+<br/></td><td id='temp:s:temp:C:LSYc4fd213c415a48eeb780cfb6c;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Generates an acknowledgement tied to a specific trip leg.
+
+<br/></td><td id='temp:s:temp:C:LSYc4fd213c415a48eeb780cfb6c;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY366080bddbf3475ab33c9429d'><td id='temp:s:temp:C:LSY366080bddbf3475ab33c9429d;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Create Travel Warning Acknowledgement from Trip Lodging</b>
+
+<br/></td><td id='temp:s:temp:C:LSY366080bddbf3475ab33c9429d;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSY366080bddbf3475ab33c9429d;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Compliance
+
+<br/></td><td id='temp:s:temp:C:LSY366080bddbf3475ab33c9429d;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Generates an acknowledgement tied to a lodging entry.
+
+<br/></td><td id='temp:s:temp:C:LSY366080bddbf3475ab33c9429d;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY82286834af904bde9836b31ad'><td id='temp:s:temp:C:LSY82286834af904bde9836b31ad;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Emergency Contacts</b>
+
+<br/></td><td id='temp:s:temp:C:LSY82286834af904bde9836b31ad;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY82286834af904bde9836b31ad;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Personnel Management
+
+<br/></td><td id='temp:s:temp:C:LSY82286834af904bde9836b31ad;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Allows employees to update their emergency contact information.
+
+<br/></td><td id='temp:s:temp:C:LSY82286834af904bde9836b31ad;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY9e047e016ed54c41bacbf091d'><td id='temp:s:temp:C:LSY9e047e016ed54c41bacbf091d;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Financial Issue</b>
+
+<br/></td><td id='temp:s:temp:C:LSY9e047e016ed54c41bacbf091d;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY9e047e016ed54c41bacbf091d;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY9e047e016ed54c41bacbf091d;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report significant financial events that could impact clearance.
+
+<br/></td><td id='temp:s:temp:C:LSY9e047e016ed54c41bacbf091d;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY203f2db1f76046f8b856c9e78'><td id='temp:s:temp:C:LSY203f2db1f76046f8b856c9e78;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Foreign Bank Account</b>
+
+<br/></td><td id='temp:s:temp:C:LSY203f2db1f76046f8b856c9e78;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY203f2db1f76046f8b856c9e78;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY203f2db1f76046f8b856c9e78;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report the opening or use of foreign bank accounts.
+
+<br/></td><td id='temp:s:temp:C:LSY203f2db1f76046f8b856c9e78;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY5f635d97852b4513bced57ade'><td id='temp:s:temp:C:LSY5f635d97852b4513bced57ade;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Foreign Citizenship</b>
+
+<br/></td><td id='temp:s:temp:C:LSY5f635d97852b4513bced57ade;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY5f635d97852b4513bced57ade;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY5f635d97852b4513bced57ade;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report foreign citizenship status or changes.
+
+<br/></td><td id='temp:s:temp:C:LSY5f635d97852b4513bced57ade;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY5f41090d0cc3439296f7afda0'><td id='temp:s:temp:C:LSY5f41090d0cc3439296f7afda0;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Foreign Election</b>
+
+<br/></td><td id='temp:s:temp:C:LSY5f41090d0cc3439296f7afda0;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY5f41090d0cc3439296f7afda0;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY5f41090d0cc3439296f7afda0;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report involvement in foreign political campaigns or elections.
+
+<br/></td><td id='temp:s:temp:C:LSY5f41090d0cc3439296f7afda0;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY1ab8b6689d8f457fba48672d5'><td id='temp:s:temp:C:LSY1ab8b6689d8f457fba48672d5;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Foreign Travel Report</b>
+
+<br/></td><td id='temp:s:temp:C:LSY1ab8b6689d8f457fba48672d5;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY1ab8b6689d8f457fba48672d5;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY1ab8b6689d8f457fba48672d5;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Submit a report for upcoming or recent foreign travel.
+
+<br/></td><td id='temp:s:temp:C:LSY1ab8b6689d8f457fba48672d5;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY743c5eb941334f60b988b6cf6'><td id='temp:s:temp:C:LSY743c5eb941334f60b988b6cf6;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Involvement in a Foreign Business</b>
+
+<br/></td><td id='temp:s:temp:C:LSY743c5eb941334f60b988b6cf6;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY743c5eb941334f60b988b6cf6;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY743c5eb941334f60b988b6cf6;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report ownership or involvement in a foreign business entity.
+
+<br/></td><td id='temp:s:temp:C:LSY743c5eb941334f60b988b6cf6;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYcfa155dc49e94a439562b1d15'><td id='temp:s:temp:C:LSYcfa155dc49e94a439562b1d15;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Marriage</b>
+
+<br/></td><td id='temp:s:temp:C:LSYcfa155dc49e94a439562b1d15;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYcfa155dc49e94a439562b1d15;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSYcfa155dc49e94a439562b1d15;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report marriage, as required under SEAD-3 guidelines.
+
+<br/></td><td id='temp:s:temp:C:LSYcfa155dc49e94a439562b1d15;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSY377aa5eab69943e6b952e60d1'><td id='temp:s:temp:C:LSY377aa5eab69943e6b952e60d1;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Media Contact</b>
+
+<br/></td><td id='temp:s:temp:C:LSY377aa5eab69943e6b952e60d1;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY377aa5eab69943e6b952e60d1;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY377aa5eab69943e6b952e60d1;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report unsolicited or suspicious contact by media personnel.
+
+<br/></td><td id='temp:s:temp:C:LSY377aa5eab69943e6b952e60d1;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYf97f76ef6d46498ea407b8eff'><td id='temp:s:temp:C:LSYf97f76ef6d46498ea407b8eff;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Ownership of Foreign Property</b>
+
+<br/></td><td id='temp:s:temp:C:LSYf97f76ef6d46498ea407b8eff;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYf97f76ef6d46498ea407b8eff;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSYf97f76ef6d46498ea407b8eff;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report ownership or purchase of property in a foreign country.
+
+<br/></td><td id='temp:s:temp:C:LSYf97f76ef6d46498ea407b8eff;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYc4f57cbb35174dd48fe8628da'><td id='temp:s:temp:C:LSYc4f57cbb35174dd48fe8628da;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Reportable Event Escalation</b>
+
+<br/></td><td id='temp:s:temp:C:LSYc4f57cbb35174dd48fe8628da;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYc4f57cbb35174dd48fe8628da;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Escalates a Reportable Event record into a standard Case record
+
+<br/></td><td id='temp:s:temp:C:LSYc4f57cbb35174dd48fe8628da;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Escalates a submitted reportable event to an FSO for review.
+
+<br/></td><td id='temp:s:temp:C:LSYc4f57cbb35174dd48fe8628da;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY2b9e696686d343188989be5d1'><td id='temp:s:temp:C:LSY2b9e696686d343188989be5d1;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Security Violation</b>
+
+<br/></td><td id='temp:s:temp:C:LSY2b9e696686d343188989be5d1;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY2b9e696686d343188989be5d1;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Create a new Security Violation record
+
+<br/></td><td id='temp:s:temp:C:LSY2b9e696686d343188989be5d1;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report actual or suspected violations of security protocols.
+
+<br/></td><td id='temp:s:temp:C:LSY2b9e696686d343188989be5d1;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSYa76fed25a422429e9e548d0a0'><td id='temp:s:temp:C:LSYa76fed25a422429e9e548d0a0;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Unofficial Contact with a Foreign Entity</b>
+
+<br/></td><td id='temp:s:temp:C:LSYa76fed25a422429e9e548d0a0;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSYa76fed25a422429e9e548d0a0;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSYa76fed25a422429e9e548d0a0;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Report any unapproved or informal contact with foreign entities.
+
+<br/></td><td id='temp:s:temp:C:LSYa76fed25a422429e9e548d0a0;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr><tr id='temp:C:LSYe5d8c8ab6f464eeb85d74f055'><td id='temp:s:temp:C:LSYe5d8c8ab6f464eeb85d74f055;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Update Individual User ID Field</b>
+
+<br/></td><td id='temp:s:temp:C:LSYe5d8c8ab6f464eeb85d74f055;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSYe5d8c8ab6f464eeb85d74f055;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Utility
+
+<br/></td><td id='temp:s:temp:C:LSYe5d8c8ab6f464eeb85d74f055;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Auto-updates the text field storing the user’s 15-char ID.
+
+<br/></td><td id='temp:s:temp:C:LSYe5d8c8ab6f464eeb85d74f055;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSYf6dd773085af4cba91aa9982d'><td id='temp:s:temp:C:LSYf6dd773085af4cba91aa9982d;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Update Individual with User ID</b>
+
+<br/></td><td id='temp:s:temp:C:LSYf6dd773085af4cba91aa9982d;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Autolaunched Flow
+
+<br/></td><td id='temp:s:temp:C:LSYf6dd773085af4cba91aa9982d;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Utility
+
+<br/></td><td id='temp:s:temp:C:LSYf6dd773085af4cba91aa9982d;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'>This Record-Triggered Flow runs when a User record is created or updated, and it performs the following action:
+
+<br/></td><td id='temp:s:temp:C:LSYf6dd773085af4cba91aa9982d;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY8250f1e8874044d2be6c812f1'><td id='temp:s:temp:C:LSY8250f1e8874044d2be6c812f1;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC - Update Travel Advisories</b>
+
+<br/></td><td id='temp:s:temp:C:LSY8250f1e8874044d2be6c812f1;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY8250f1e8874044d2be6c812f1;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'><br>Compliance
+
+<br/></td><td id='temp:s:temp:C:LSY8250f1e8874044d2be6c812f1;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Fetches and updates the latest travel warnings from the State Department.
+
+<br/></td><td id='temp:s:temp:C:LSY8250f1e8874044d2be6c812f1;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>
+
+<br/></td></tr><tr id='temp:C:LSY613b6bc9a5564cbab4e0dbd24'><td id='temp:s:temp:C:LSY613b6bc9a5564cbab4e0dbd24;temp:C:LSY9bd5a487893a4d59ab1c9b8f2' style='background-color:#d4d4d4;text-align: left;vertical-align: top;'><br><b>INDSEC Alcohol and Drug Treatment</b>
+
+<br/></td><td id='temp:s:temp:C:LSY613b6bc9a5564cbab4e0dbd24;temp:C:LSY6f68974e3ed042dcaad984661' style='text-align: left;vertical-align: top;'><br>Screen Flow
+
+<br/></td><td id='temp:s:temp:C:LSY613b6bc9a5564cbab4e0dbd24;temp:C:LSYb046ae61a8e74ccd95bbeb92b' style='text-align: left;vertical-align: top;'>Creates a new Reportable Event Record
+
+<br/></td><td id='temp:s:temp:C:LSY613b6bc9a5564cbab4e0dbd24;temp:C:LSYdd04d0585804497ba94b6043d' style='text-align: left;vertical-align: top;'><br>Used to report entry into alcohol or drug treatment programs.
+
+<br/></td><td id='temp:s:temp:C:LSY613b6bc9a5564cbab4e0dbd24;temp:C:LSY410a02a4f3e74c44938ca1189' style='text-align: left;vertical-align: top;'>Yes
+
+<br/></td></tr></tbody></table></div><h3 id='temp:C:LSY462b04c258914266ae1ad394e'><u>9. Data Model Diagram </u></h3>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip.com/blob/LSYAAAFCeXL/7Tq2vJogTZ0V1PLamz7kmA?a=PWa2NeyYCMZiYCxCfKLjWadlpLT9ca55GTwa4Vq1igYa' id='temp:C:LSY65d0ef03768a4137b52d4ab51' alt="Screenshot 2025-06-25 at 11.48.19 PM.png"></img></div><br/>
+
+<br/>
+
+<br/>
+
+</body></html>
